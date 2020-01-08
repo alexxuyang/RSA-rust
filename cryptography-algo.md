@@ -1,5 +1,3 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 # 基础数学知识点
 ## 模运算
 已知正整数a，b，我们求出a除以b的商与余数：

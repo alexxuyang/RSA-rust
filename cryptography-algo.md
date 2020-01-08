@@ -1,3 +1,5 @@
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
 # 基础数学知识点
 ## 模运算
 已知正整数a，b，我们求出a除以b的商与余数：
@@ -153,13 +155,13 @@ inv(12, 29) = 17
 
 那么，是否还有更好的方法呢？有，方法之一就是使用EEA算法。
 
-因为p是质数，对于任意a，gcd(a, p) = 1
+因为p是质数，对于任意a < p，gcd(a, p) = 1
 
-又，根据EEA，我们知道可以求得：x和y，使得：a * x + p * y = gcd(a, p) = 1
+又根据EEA，我们知道可以求得：x和y，使得：a * x + p * y = gcd(a, p) = 1
 
-所以：a * x mod p = 1
+所以：**a * x mod p = 1**
 
-所以a的逆元就是x。这里需要注意，有可能此方法算出的x是负数，或者大小超过了p，所以最后需要对x做一个优化。详见代码。
+**所以a的逆元就是x**。这里需要注意，有可能此方法算出的x是负数，或者大小超过了p，所以最后需要对x做一个优化。详见代码。
 
 这里是EEA和INV的RUST实现代码，或者参考[这里](https://github.com/alexxuyang/cryptography-algo/blob/master/src/ext_euclid.rs)。
 
@@ -210,12 +212,23 @@ mod tests {
 }
 ```
 
+## 欧拉函数
 
+对正整数n，欧拉函数是小于或等于n的正整数中与n互质的数的数目（因此φ(1) = 1）。此函数以其首名研究者欧拉命名(Euler's totient function)，它又称为Euler's totient function、φ函数、欧拉商数等。 例如φ(8) = 4，因为1,3,5,7均和8互质。
 
+欧拉公式如下所示：
 
+![](http://latex.codecogs.com/gif.latex?\\varphi(x)=x\\prod_{i=1}^{n}\\left(1-\\frac{1}{p_{i}}\\right))
 
+其中，x有n个质因数，p<sub>i</sub>是第i个质因数。例如我们需要计算φ(8)，8的质因数只有2，那么：
 
+φ(8) = 8 * (1 - 1/2) = 8 * 1/2 = 4，正确
 
+对于任何质数，p，φ(p) = p - 1
+
+对于任何质数p和q，φ(p * q) = (p - 1) * (q - 1)
+
+## 欧拉定理
 
 
 

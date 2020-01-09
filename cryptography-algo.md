@@ -234,7 +234,7 @@ mod tests {
 
 欧拉定理表明，若n,a为正整数，且n,a互质，则：
 
-![](http://latex.codecogs.com/gif.latex?\\(a^{\\varphi(n)} \\equiv 1(\\bmod n)\\))
+![](https://latex.codecogs.com/gif.latex?a^{\\varphi(n)}&space;\\equiv&space;1(\\bmod&space;n))
 
 其中，φ(n)是欧拉函数。
 

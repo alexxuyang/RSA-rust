@@ -161,7 +161,7 @@ inv(12, 29) = 17
 
 又根据EEA，我们知道可以求得：x和y，使得：a * x + p * y = gcd(a, p) = 1
 
-所以：**a * x mod p = 1**
+所以：**a * x ≡ 1 (mod p)**
 
 **所以a的逆元就是x**。这里需要注意，有可能此方法算出的x是负数，或者大小超过了p，所以最后需要对x做一个优化。详见代码。
 
@@ -242,7 +242,7 @@ mod tests {
 
 这里做一个简洁的证明：
 
-将1-n中，与n互质的数，定义为集合A：{X1, X2 ... , X<sub>φ(n)</sub>}，可知总共有φ(n)个数。同时他们都与n互质。所以集合A是mod n的一个**缩系**。
+将1-n中，与n互质的数，定义为集合A：{X1, X2 ... , X<sub>φ(n)</sub>}，可知总共有φ(n)个数。同时它们都与n互质。所以集合A是mod n的一个**缩系**。
 
 构造集合B：{Y1 = a * X1, Y2 = a * X2 ... , Y<sub>φ(n)</sub> = a * X<sub>φ(n)</sub>}，因为a、X<sub>i</sub>都与n互质，可知Y<sub>i</sub>也都与n互质。
 
@@ -256,7 +256,9 @@ mod tests {
 
 这样，我们有两个mod n的缩系集合A、B，根据缩系的定义，将两个集合的各自元素求其积，可知这两个积mod n是相等的：
 
-(a * X1) * (a * X2) * (a * X<sub>φ(n)</sub>) ≡ X1* X2 * X<sub>φ(n)</sub> mod n => a<sup>φ(n)</sup> * (X1X2...X<sub>φ(n)</sub>) ≡ X1X2...X<sub>φ(n)</sub> mod n
+(a * X1) * (a * X2) * (a * X<sub>φ(n)</sub>) ≡ X1* X2 * X<sub>φ(n)</sub> mod n
+
+=> a<sup>φ(n)</sup> * (X1X2...X<sub>φ(n)</sub>) ≡ X1X2...X<sub>φ(n)</sub> mod n
 
 => (a<sup>φ(n)</sup> - 1) * (X1X2...X<sub>φ(n)</sub>) ≡ 0 mod n
 
@@ -264,7 +266,54 @@ mod tests {
 
 # RSA算法
 
+## 综述
+
 终于讲到RSA算法了，大家都还跟住的吧:joy::joy:
+
+RSA算法是由Ron Rivest、Ad Shamir、Leonard Adleman，于1977年提出的，RSA就是他们三位名字的首字母拼在一起组成的。
+
+RSA是一种非对称加密算法，其核心思路是，alice公开自己的公钥K<sub>pub</sub>，同时仅仅只有alice知道自己的私钥K<sub>pri</sub>；bob使用K<sub>pub</sub>对数据m进行加密，得到秘文c，并将c传输给alice。
+
+此时，alice使用私钥K<sub>pri</sub>对密文c进行解密，得到明文数据m。由于只有alice知道私钥K<sub>pri</sub>，就算其他人得到了密文c，也无法解密出其明文来。对大整数进行因数分解的难度，是RSA算法安全性的保证。
+
+## 算法描述
+
+### 算法准备
+
+1. 选取两个质数p、q，p != q，计算其乘积：n = p * q
+2. 计算：φ(n) = (p - 1) * (q - 1)
+3. 让：r = φ(n)
+3. 任选一整数e，1 < e < r，且：gcd(e, r) = 1
+4. 根据算法EEA，求得e的逆元d，使得：ed ≡ 1 (mod r)
+5. 最终，(n, e）即是公钥，（n, d）即是私钥
+6. alice公开公钥（n，e），同时将私钥（n，d）自己私密保管
+
+### 数据加密
+
+对于任何数字m，计算：c ≡ m<sup>e</sup> (mod n)
+
+这里c即是密文
+
+### 数据解密
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

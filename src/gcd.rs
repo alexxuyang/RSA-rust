@@ -1,4 +1,4 @@
-pub fn gcd(x: u64, y: u64) -> u64 {
+pub fn gcd(x: i128, y: i128) -> i128 {
     let remainder = x % y;
 
     if remainder == 0 {

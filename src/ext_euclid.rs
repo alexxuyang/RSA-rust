@@ -1,4 +1,4 @@
-fn ext_euclid(x: i64, y: i64) -> (i64, i64, i64) {
+fn ext_euclid(x: i128, y: i128) -> (i128, i128, i128) {
     let (mut old_r, mut r) = (x, y);
     let (mut old_s, mut s) = (1, 0);
     let (mut old_t, mut t) = (0, 1);
@@ -25,7 +25,7 @@ fn ext_euclid(x: i64, y: i64) -> (i64, i64, i64) {
     }
 }
 
-fn inv(a: i64, p: i64) -> i64 {
+pub fn inv(a: i128, p: i128) -> i128 {
     let (r, _, _) = ext_euclid(a, p);
     return ((r % p) + p) % p
 }

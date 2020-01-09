@@ -280,21 +280,36 @@ RSA是一种非对称加密算法，其核心思路是，alice公开自己的公
 
 ### 算法准备
 
-1. 选取两个质数p、q，p != q，计算其乘积：n = p * q
-2. 计算：φ(n) = (p - 1) * (q - 1)
-3. 让：r = φ(n)
+1. 选取两个质数p、q，p != q，计算其乘积：N = p * q
+2. 计算：φ(N) = (p - 1) * (q - 1)
+3. 让：r = φ(N)
 3. 任选一整数e，1 < e < r，且：gcd(e, r) = 1
 4. 根据算法EEA，求得e的逆元d，使得：ed ≡ 1 (mod r)
-5. 最终，(n, e）即是公钥，（n, d）即是私钥
-6. alice公开公钥（n，e），同时将私钥（n，d）自己私密保管
+5. 最终，(N, e）即是公钥，（N, d）即是私钥
+6. alice公开公钥（N，e），同时将私钥（N，d）自己私密保管
 
 ### 数据加密
 
-对于任何数字m，计算：c ≡ m<sup>e</sup> (mod n)
-
-这里c即是密文
+bob对于任何消息m，将其转化成整数n，计算：c ≡ n<sup>e</sup> (mod N)，这里c即是密文。
 
 ### 数据解密
+
+alice拿到密文，计算：n ≡ c<sup>d</sup> (mod N)，这里n即是明文。
+
+### 算法证明
+
+因为：ed ≡ 1 (mod r)
+
+所以：ed = rm + 1，m为正整数
+
+所以：c<sup>d</sup> ≡ n<sup>ed</sup> ≡ n<sup>rm + 1</sup> ≡ n * n<sup>rm</sup> (mod N)
+
+根据欧拉定理，可知：n<sup>r</sup> ≡ 1 (mod N)，代入上式：
+
+n * 1<sup>m</sup> ≡ n (mod N)
+
+所以结论为：c<sup>d</sup> ≡ n (mod N)
+
 
 
 

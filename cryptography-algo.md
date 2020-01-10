@@ -310,6 +310,31 @@ n * 1<sup>m</sup> ≡ n (mod N)
 
 所以结论为：c<sup>d</sup> ≡ n (mod N)
 
+### 代码与分析
+
+在RSA算法的实现过程中，首先需要随机生成两个大质数，目前推荐至少是2048位的质数，这样可以保证安全。我们在程序模拟过程中，不会使用这么大的质数，
+
+
+
+
+
+
+
+
+
+
+
+
+
+openssl prime -generate -bits 64 -safe
+16977949338478092359
+
+openssl prime -generate -bits 64 -safe
+18225713719761583067
+
+openssl prime 16977949338478092359
+16977949338478092359 is prime
+
 
 
 

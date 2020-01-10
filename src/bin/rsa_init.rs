@@ -5,9 +5,11 @@ use cryptography_algo::ext_euclid;
 use rand::Rng;
 
 fn main() {
-    let p: i128 = 88668866989;
-    let q: i128 = 13917341761;
-    let N: i128 = p * q;
+    // let p: i64 = 666889;
+    // let q: i64 = 981287;
+    let p: i64 = 16977949338478092359;
+    let q: i64 = 981287;
+    let N: i64 = p * q;
     let r = (p - 1) * (q - 1);
 
     println!("p: {} ,q: {} N: {}, r: {}", p, q, N, r);
@@ -16,8 +18,8 @@ fn main() {
 
     let mut e;
     loop {
-        e = rng.gen::<u16>() as i128;
-        if gcd::gcd(e, p) == 1 && gcd::gcd(e, q) == 1 {
+        e = rng.gen::<u16>() as i64;
+        if gcd::gcd(e, r)  == 1 {
             break;
         }
     }

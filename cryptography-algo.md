@@ -337,9 +337,70 @@ RSA需要的几个外部算法，gcd与EEA，在之前的部分都已经介绍�
 
 二次方操作，其实就是自乘，所以其核心思路是，将模幂运算降为了模乘运算，算法难度从O(2<sup>n</sup>)降为了O(n)。
 
-## 代码与示例
+## RSA算法代码与示例
 
 至此所有的准备工作都好了，我们可以愉快的编码了 :joy::joy:
+
+### 初始化
+
+RSA算法初始化的部分如下，或者看[这里](https://github.com/alexxuyang/cryptography-algo/blob/master/src/bin/rsa_init.rs)。
+
+```RUST
+extern crate cryptography_algo;
+
+use cryptography_algo::gcd;
+use cryptography_algo::ext_euclid;
+
+use rand::Rng;
+use std::env;
+
+fn main() {
+    let p;
+    let q; 
+
+    if env::args().len() == 3 {
+
+        p = i64::from_str_radix(&env::args().nth(1).unwrap(), 10).unwrap();
+        q = i64::from_str_radix(&env::args().nth(2).unwrap(), 10).unwrap();
+
+        if !prime_tools::is_u64_prime(p as u64) {
+            panic!("p is not a prime number!");
+        }
+
+        if !prime_tools::is_u64_prime(q as u64) {
+            panic!("q is not a prime number!");
+        }
+    } else {
+        p = 2134324421;
+        q = 1990843139;
+    }
+
+    let N: i64 = p * q;
+    let r = (p - 1) * (q - 1);
+
+    println!("p: {} ,q: {} N: {}, r: {}", p, q, N, r);
+
+    let mut rng = rand::thread_rng();
+
+    let mut e;
+    loop {
+        e = rng.gen::<u16>() as i64;
+        if gcd::gcd(e, r)  == 1 {
+            break;
+        }
+    }
+
+    let d = ext_euclid::inv(e, r);
+
+    println!("e: {}, d: {}", e, d);
+
+    println!("public key is(N, e): ({}, {})", N, e);
+    println!("private key is(N, d): ({}, {})", N, d);
+}
+```
+核心部分很简单，根据p、q，计算N、r；随机生成e，需要gcd(e, r) = 1，同时求得e的逆元d。
+
+### 加密解密
 
 下面的是蒙哥马利算法的RUST代码，或者看[这里](https://github.com/alexxuyang/cryptography-algo/blob/master/src/power_mod.rs)。
 
@@ -398,44 +459,78 @@ mod tests {
     }
 }
 ```
+加解密算法入口程序如下，或者看[这里](https://github.com/alexxuyang/cryptography-algo/blob/master/src/bin/rsa_enc_dec.rs)。
 
+```RUST
+extern crate cryptography_algo;
 
+use cryptography_algo::power_mod;
 
+use std::env;
 
+fn main() {
+    if env::args().len() < 3 {
+        println!("program should be start with: rsa_enc_dec base power modula");
+        return;
+    }
 
+    let base = i64::from_str_radix(&env::args().nth(1).unwrap(), 10).unwrap();
+    let power = i64::from_str_radix(&env::args().nth(2).unwrap(), 10).unwrap();
+    let modula = i64::from_str_radix(&env::args().nth(3).unwrap(), 10).unwrap();
 
+    println!("base: {}, power: {}, modula: {}", base, power, modula);
 
+    println!("result: {}", power_mod::power_mod(base, power, modula));
+}
+```
+### 运行示例
 
+可以使用openssl命令得到质数，命令如下：
 
-
-
-
-
-
-
-
+```
 openssl prime -generate -bits 32 -safe
-4268648843
-2134324421
+```
 
-openssl prime -generate -bits 32 -safe
-3981686279
-1990843139
+***算法初始化：***
 
+```
 target/release/rsa_init 2134324421 1990843139
 p: 2134324421 ,q: 1990843139 N: 4249105129947997519, r: 4249105125822829960
 e: 1343, d: 1920481616808978247
 public key is(N, e): (4249105129947997519, 1343)
 private key is(N, d): (4249105129947997519, 1920481616808978247)
+```
 
-raw message: 50412164937805327
+初始化需要两个质数参数p、q（不输入则使用默认值），这里注意，由于程序限制p、q的值需要小于：sqrt(2<sup>63</sup>)，p、q最大为3037000493。
 
-encryption
+初始化的结果是，得到了公钥（N，e），与私钥（N，d）。这时，alice将公钥给到bob，私钥自己私密保管。
+
+***数据加密：***
+
+```
 target/release/rsa_enc_dec 50412164937805327 1343 4249105129947997519
 base: 50412164937805327, power: 1343, modula: 4249105129947997519
 result: 1099769683952491905
+```
+bob拿到alice的公钥后，对自己的数据，进行加密计算。
 
-decryption
+该程序有三个参数，第一个是原始数据，后面两个参数分别为公钥中的e与N。
+
+加密过程使用蒙哥马利算法进行模幂计算，最终得到了加密后的密文。
+
+这时，bob将密文[50412164937805327]给到alice。
+
+***数据解密：***
+
+```
 target/release/rsa_enc_dec 1099769683952491905 1920481616808978247 4249105129947997519
 base: 1099769683952491905, power: 1920481616808978247, modula: 4249105129947997519
 result: 50412164937805327
+```
+alice拿到bob的密文数据后，结合自己的私钥数据，进行数据解密。
+
+该程序有三个参数，第一个是密文数据，后面两个参数分别为私钥中的d与N。
+
+解密过程使用蒙哥马利算法进行模幂计算，最终得到了解密后的明文[50412164937805327]。
+
+可以看到，最终解密出的明文数据，与最初bob生成的数据是一致的，bingo :smiley::smiley::smiley:

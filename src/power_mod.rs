@@ -12,17 +12,13 @@ pub fn power_mod(base: i64, mut power: i64, N: i64) -> i64 {
 
     let mut result: i64 = 1;
     while let Some(bit) = bits.pop() {
-        result = mod_double(result, N);
+        result = mod_multiply(result, result, N);
         if bit {
             result = mod_multiply(result, base, N);
         }
     }
 
     result
-}
-
-pub fn mod_double(base: i64, N: i64) -> i64 {
-    ((base as i128 * base as i128) % (N as i128)) as i64
 }
 
 pub fn mod_multiply(a: i64, b:i64, N: i64) -> i64 {
@@ -32,14 +28,6 @@ pub fn mod_multiply(a: i64, b:i64, N: i64) -> i64 {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn mod_double_works() {
-        assert_eq!(mod_double(10, 17), 15);
-        assert_eq!(mod_double(6, 27), 9);
-        assert_eq!(mod_double(4, 2), 0);
-        assert_eq!(mod_double(27, 6), 3);
-    }
 
     #[test]
     fn mod_multiply_works() {

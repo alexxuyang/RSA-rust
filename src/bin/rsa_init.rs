@@ -2,13 +2,31 @@ extern crate cryptography_algo;
 
 use cryptography_algo::gcd;
 use cryptography_algo::ext_euclid;
+
 use rand::Rng;
+use std::env;
 
 fn main() {
-    // let p: i64 = 666889;
-    // let q: i64 = 981287;
-    let p: i64 = 16977949338478092359;
-    let q: i64 = 981287;
+    let p;
+    let q; 
+
+    if env::args().len() == 3 {
+
+        p = i64::from_str_radix(&env::args().nth(1).unwrap(), 10).unwrap();
+        q = i64::from_str_radix(&env::args().nth(2).unwrap(), 10).unwrap();
+
+        if !prime_tools::is_u64_prime(p as u64) {
+            panic!("p is not a prime number!");
+        }
+
+        if !prime_tools::is_u64_prime(q as u64) {
+            panic!("q is not a prime number!");
+        }
+    } else {
+        p = 2134324421;
+        q = 1990843139;
+    }
+
     let N: i64 = p * q;
     let r = (p - 1) * (q - 1);
 

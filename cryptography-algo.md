@@ -276,9 +276,7 @@ RSA是一种非对称加密算法，其核心思路是，alice公开自己的公
 
 此时，alice使用私钥K<sub>pri</sub>对密文c进行解密，得到明文数据m。由于只有alice知道私钥K<sub>pri</sub>，就算其他人得到了密文c，也无法解密出其明文来。对大整数进行因数分解的难度，是RSA算法安全性的保证。
 
-## 算法描述
-
-### 算法准备
+## 算法准备
 
 1. 选取两个质数p、q，p != q，计算其乘积：N = p * q
 2. 计算：φ(N) = (p - 1) * (q - 1)
@@ -288,15 +286,15 @@ RSA是一种非对称加密算法，其核心思路是，alice公开自己的公
 5. 最终，(N, e）即是公钥，（N, d）即是私钥
 6. alice公开公钥（N，e），同时将私钥（N，d）自己私密保管
 
-### 数据加密
+## 数据加密
 
 bob对于任何消息m，将其转化成整数n，计算：c ≡ n<sup>e</sup> (mod N)，这里c即是密文。
 
-### 数据解密
+## 数据解密
 
 alice拿到密文，计算：n ≡ c<sup>d</sup> (mod N)，这里n即是明文。
 
-### 算法证明
+## 算法证明
 
 因为：ed ≡ 1 (mod r)
 
@@ -310,9 +308,96 @@ n * 1<sup>m</sup> ≡ n (mod N)
 
 所以结论为：c<sup>d</sup> ≡ n (mod N)
 
-### 代码与分析
+## 蒙哥马利算法
 
-在RSA算法的实现过程中，首先需要随机生成两个大质数，目前推荐至少是2048位的质数，这样可以保证安全。我们在程序模拟过程中，不会使用这么大的质数，
+在RSA算法的实现过程中，首先需要随机生成两个大质数，目前推荐至少是2048位的质数，这样可以保证安全。我们在程序模拟过程中，不会使用这么大的质数，仅仅做一个演示。
+
+RSA需要的几个外部算法，gcd与EEA，在之前的部分都已经介绍过。可以注意到，其加密、解密的过程，牵涉到模运算与指数计算，因为真实环境下，e或者d这两个值，可能会非常的大（例如超过2<sup>1000</sup>），所以这里还需要有一些优化，不能直接计算n<sup>e</sup>、c<sup>d</sup>。
+
+所以，这里还需要介绍一个算法 - 蒙哥马利算法，蒙哥马利(Montgomery)幂模运算是快速计算a<sup>b</sup> mod p的一种算法，是RSA加密算法的核心之一。需要注意的是，该算法仅仅是作为提升效率而使用，与RSA算法的安全性本身没有关系。
+
+我们可以看一个简单的例子，例如需要计算A<sup>13</sup> mod P，我们可以这样：
+
+| 步骤 | 公式 | 值 | 操作 | op_code |
+| --- | --: | --:| --:| --:|
+1 | A1 = 1 * 1 mod p | 1 | 二次方 | 1 |
+2 | A2 = A1 * A mod p | A<sup>1</sup>  | 乘A | - |
+3 | A3 = A2 * A2 mod p | A<sup>2</sup> | 二次方 | 1 |
+4 | A4 = A3 * A mod p | A<sup>3</sup>  | 乘A | - |
+5 | A5 = A4 * A4 mod p | A<sup>6</sup> | 二次方 | 0 |
+6 | A6 = A5 * A5 mod p | A<sup>12</sup> | 二次方 | 1 |
+7 | A7 = A6 * A mod p | A<sup>13</sup> | 乘A | - |
+
+我们将13按照2进制显示为：0b1101，大家可以观察到，这里的四个数字，1101，和上表中的op_code的1101相对应，其意思是：
+
+- 首先设置结果的初始值为1
+- 将幂值的二进制表达式从左向右做循环
+	- 遇到1，则做两个操作：二次方操作 + 乘A操作
+	- 遇到0，则仅仅做：二次方操作
+
+二次方操作，其实就是自乘，所以其核心思路是，将模幂运算降为了模乘运算，算法难度从O(2<sup>n</sup>)降为了O(n)。
+
+## 代码与示例
+
+至此所有的准备工作都好了，我们可以愉快的编码了 :joy::joy:
+
+下面的是蒙哥马利算法的RUST代码，或者看[这里](https://github.com/alexxuyang/cryptography-algo/blob/master/src/power_mod.rs)。
+
+```RUST
+pub fn power_mod(base: i64, mut power: i64, N: i64) -> i64 {
+    let mut bits = Vec::new();
+
+    while power != 0 {
+        match power & 1 {
+           1 => bits.push(true),
+           0 => bits.push(false),
+           _ => {}
+        }
+        power = power >> 1;
+    }
+
+    let mut result: i64 = 1;
+    while let Some(bit) = bits.pop() {
+        result = mod_multiply(result, result, N);
+        if bit {
+            result = mod_multiply(result, base, N);
+        }
+    }
+
+    result
+}
+
+pub fn mod_multiply(a: i64, b:i64, N: i64) -> i64 {
+    ((a as i128 * b as i128) % (N as i128)) as i64
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn mod_multiply_works() {
+        assert_eq!(mod_multiply(10, 20, 17), 13);
+        assert_eq!(mod_multiply(6, 27, 5), 2);
+        assert_eq!(mod_multiply(4, 2, 19), 8);
+        assert_eq!(mod_multiply(27, 6, 13), 6);
+    }
+
+    #[test]
+    fn power_mod_works() {
+        assert_eq!(power_mod(3, 4, 5), 1);
+        assert_eq!(power_mod(6, 10, 5), 1);
+        assert_eq!(power_mod(5, 13, 19), 17);
+        assert_eq!(power_mod(27, 6, 51), 9);
+        assert_eq!(power_mod(45, 13, 19), 7);
+        assert_eq!(power_mod(1234567, 100, 199), 29);
+        assert_eq!(power_mod(66887799, 1000000, 1001), 22);
+        assert_eq!(power_mod(1357924680, 999999, 666889), 355775);
+        assert_eq!(power_mod(113355778866, 99999, 981287), 797582);
+        assert_eq!(power_mod(113355778866, 999999, 5050404053), 31958690);
+    }
+}
+```
 
 
 
@@ -326,40 +411,31 @@ n * 1<sup>m</sup> ≡ n (mod N)
 
 
 
-openssl prime -generate -bits 64 -safe
-16977949338478092359
-
-openssl prime -generate -bits 64 -safe
-18225713719761583067
-
-openssl prime 16977949338478092359
-16977949338478092359 is prime
 
 
 
+openssl prime -generate -bits 32 -safe
+4268648843
+2134324421
 
+openssl prime -generate -bits 32 -safe
+3981686279
+1990843139
 
+target/release/rsa_init 2134324421 1990843139
+p: 2134324421 ,q: 1990843139 N: 4249105129947997519, r: 4249105125822829960
+e: 1343, d: 1920481616808978247
+public key is(N, e): (4249105129947997519, 1343)
+private key is(N, d): (4249105129947997519, 1920481616808978247)
 
+raw message: 50412164937805327
 
+encryption
+target/release/rsa_enc_dec 50412164937805327 1343 4249105129947997519
+base: 50412164937805327, power: 1343, modula: 4249105129947997519
+result: 1099769683952491905
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+decryption
+target/release/rsa_enc_dec 1099769683952491905 1920481616808978247 4249105129947997519
+base: 1099769683952491905, power: 1920481616808978247, modula: 4249105129947997519
+result: 50412164937805327

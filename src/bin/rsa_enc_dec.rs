@@ -2,7 +2,6 @@ extern crate cryptography_algo;
 
 use cryptography_algo::power_mod;
 
-use rand::Rng;
 use std::env;
 
 fn main() {

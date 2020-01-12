@@ -5,7 +5,6 @@ use cryptography_algo::ext_euclid;
 
 use rand::Rng;
 use std::env;
-use primes::PrimeSet;
 
 fn main() {
     let p;
@@ -28,15 +27,6 @@ fn main() {
     } else {
         p = 2134324421;
         q = 1990843139;
-
-        let mut pset = PrimeSet::new();
-        let (ix, n) = pset.find(rng.gen::<u32>() as u64);
-        println!("{}: {}", ix, n);
-
-        let (ix, m) = pset.find(rng.gen::<u32>() as u64);
-        println!("{}: {}", ix, m);
-
-        return;
     }
 
     let N: i64 = p * q;

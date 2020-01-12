@@ -9,3 +9,4 @@ edition = "2018"
 [dependencies]
 rand = "0.7.2"
 prime_tools = "0.2.2"
+primes = "0.2.4"

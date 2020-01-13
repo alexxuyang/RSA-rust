@@ -1,0 +1,628 @@
+<!DOCTYPE html><html lang="en-US"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style>@media screen{body,html{background:#000;height:100%;margin:0;overflow:hidden}[data-bespoke-marp-fragment=inactive]{visibility:hidden}.bespoke-marp-osc{display:none;opacity:0}.bespoke-marp-parent{bottom:0;left:0;position:absolute;right:0;top:0}.bespoke-marp-parent>.bespoke-marp-osc{background:rgba(0,0,0,.65);border-radius:7px;bottom:50px;color:#fff;display:block;font-family:Helvetica,Arial,sans-serif;font-size:16px;left:50%;line-height:0;opacity:1;padding:12px;position:absolute;touch-action:manipulation;-webkit-transform:translateX(-50%);transform:translateX(-50%);-webkit-transition:opacity .2s linear;transition:opacity .2s linear;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;white-space:nowrap;z-index:1;will-change:transform}.bespoke-marp-parent>.bespoke-marp-osc>*{margin-left:6px}.bespoke-marp-parent>.bespoke-marp-osc>:first-child{margin-left:0}.bespoke-marp-parent>.bespoke-marp-osc>span{opacity:.8}.bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page]{display:inline-block;min-width:140px;text-align:center}.bespoke-marp-parent>.bespoke-marp-osc>button{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;color:inherit;cursor:pointer;font-size:inherit;opacity:.8;outline:none;padding:0;-webkit-transition:opacity .2s linear;transition:opacity .2s linear;-webkit-tap-highlight-color:transparent}.bespoke-marp-parent>.bespoke-marp-osc>button:disabled{cursor:not-allowed;opacity:.15!important}.bespoke-marp-parent>.bespoke-marp-osc>button:hover{opacity:1}.bespoke-marp-parent>.bespoke-marp-osc>button:hover:active{opacity:.6}.bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled){-webkit-transition:none;transition:none}.bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNNjggOTBMMjggNTBsNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;height:32px;overflow:hidden;text-indent:100%;white-space:nowrap;width:32px}.bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNMzIgOTBsNDAtNDAtNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;height:32px;overflow:hidden;text-indent:100%;white-space:nowrap;width:32px}.bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTQwIDcwSDIwVjUwbTIwIDBMMjAgNzBtNDAtNDBoMjB2MjBtLTIwIDBsMjAtMjAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;height:32px;overflow:hidden;text-indent:100%;white-space:nowrap;width:32px}.bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen].exit{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTIwIDUwaDIwdjIwbS0yMCAwbDIwLTIwbTQwIDBINjBWMzBtMjAgMEw2MCA1MCIvPjwvc3ZnPg==")}.bespoke-marp-parent.bespoke-marp-inactive{cursor:none}.bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc{opacity:0;pointer-events:none}svg.bespoke-marp-slide{height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%;z-index:-1}svg.bespoke-marp-slide.bespoke-marp-active{pointer-events:auto;z-index:0}svg.bespoke-marp-slide[data-bespoke-marp-load=hideable]{display:none}svg.bespoke-marp-slide[data-bespoke-marp-load=hideable].bespoke-marp-active{display:block}.bespoke-progress-parent{background:#222;display:-webkit-box;display:flex;height:5px;width:100%}.bespoke-progress-parent+.bespoke-marp-parent{top:5px}.bespoke-progress-parent .bespoke-progress-bar{-webkit-box-flex:0;flex:0 0 0;background:#0288d1;-webkit-transition:-webkit-flex-basis .2s cubic-bezier(0,1,1,1);transition:-webkit-flex-basis .2s cubic-bezier(0,1,1,1);transition:flex-basis .2s cubic-bezier(0,1,1,1);transition:flex-basis .2s cubic-bezier(0,1,1,1),-webkit-flex-basis .2s cubic-bezier(0,1,1,1)}}@media print{.bespoke-marp-osc,.bespoke-progress-parent{display:none!important;-webkit-transition:none!important;transition:none!important}.bespoke-marp-parent{top:0}}</style><style>div#p>svg>foreignObject>section{width:1280px;height:720px;box-sizing:border-box;overflow:hidden;position:relative;scroll-snap-align:center center}div#p>svg>foreignObject>section:after{bottom:0;content:attr(data-marpit-pagination);padding:inherit;pointer-events:none;position:absolute;right:0}div#p>svg>foreignObject>section:not([data-marpit-pagination]):after{display:none}/* Normalization */div#p>svg>foreignObject>section h1{font-size:2em;margin:0.67em 0}div#p>svg>foreignObject>section video::-webkit-media-controls{will-change:transform}@page{size:1280px 720px;margin:0}@media print{body,html{background-color:#fff;margin:0;page-break-inside:avoid;break-inside:avoid-page}div#p>svg>foreignObject>section{page-break-before:always;break-before:page}div#p>svg>foreignObject>section,div#p>svg>foreignObject>section *{-webkit-print-color-adjust:exact!important;color-adjust:exact!important}div#p>svg[data-marpit-svg]{display:block;height:100vh;width:100vw}}div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{display:block;height:auto;width:100%}@supports (-ms-ime-align:auto){div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{position:static}}div#p>svg>foreignObject>section svg[data-marp-fitting=svg].__reflow__{content:""}@supports (-ms-ime-align:auto){div#p>svg>foreignObject>section svg[data-marp-fitting=svg].__reflow__{position:relative}}div#p>svg>foreignObject>section [data-marp-fitting-svg-content]{display:table;white-space:nowrap}div#p>svg>foreignObject>section [data-marp-fitting-svg-content-wrap]{white-space:pre}div#p>svg>foreignObject>section img[data-marp-twemoji]{background:transparent;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em;width:1em}
+/*!
+ * Marp default theme.
+ *
+ * @theme default
+ * @author Yuki Hattori
+ *
+ * @auto-scaling true
+ * @size 4:3 960px 720px
+ */div#p>svg>foreignObject>section .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}div#p>svg>foreignObject>section .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}div#p>svg>foreignObject>section .anchor:focus{outline:none}div#p>svg>foreignObject>section h1 .octicon-link,div#p>svg>foreignObject>section h2 .octicon-link,div#p>svg>foreignObject>section h3 .octicon-link,div#p>svg>foreignObject>section h4 .octicon-link,div#p>svg>foreignObject>section h5 .octicon-link,div#p>svg>foreignObject>section h6 .octicon-link{color:#1b1f23;vertical-align:middle;visibility:hidden}div#p>svg>foreignObject>section h1:hover .anchor,div#p>svg>foreignObject>section h2:hover .anchor,div#p>svg>foreignObject>section h3:hover .anchor,div#p>svg>foreignObject>section h4:hover .anchor,div#p>svg>foreignObject>section h5:hover .anchor,div#p>svg>foreignObject>section h6:hover .anchor{text-decoration:none}div#p>svg>foreignObject>section h1:hover .anchor .octicon-link,div#p>svg>foreignObject>section h2:hover .anchor .octicon-link,div#p>svg>foreignObject>section h3:hover .anchor .octicon-link,div#p>svg>foreignObject>section h4:hover .anchor .octicon-link,div#p>svg>foreignObject>section h5:hover .anchor .octicon-link,div#p>svg>foreignObject>section h6:hover .anchor .octicon-link{visibility:visible}div#p>svg>foreignObject>section{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;font-size:16px;line-height:1.5;word-wrap:break-word}div#p>svg>foreignObject>section .pl-c{color:#6a737d}div#p>svg>foreignObject>section .pl-c1,div#p>svg>foreignObject>section .pl-s .pl-v{color:#005cc5}div#p>svg>foreignObject>section .pl-e,div#p>svg>foreignObject>section .pl-en{color:#6f42c1}div#p>svg>foreignObject>section .pl-s .pl-s1,div#p>svg>foreignObject>section .pl-smi{color:#24292e}div#p>svg>foreignObject>section .pl-ent{color:#22863a}div#p>svg>foreignObject>section .pl-k{color:#d73a49}div#p>svg>foreignObject>section .pl-pds,div#p>svg>foreignObject>section .pl-s,div#p>svg>foreignObject>section .pl-s .pl-pse .pl-s1,div#p>svg>foreignObject>section .pl-sr,div#p>svg>foreignObject>section .pl-sr .pl-cce,div#p>svg>foreignObject>section .pl-sr .pl-sra,div#p>svg>foreignObject>section .pl-sr .pl-sre{color:#032f62}div#p>svg>foreignObject>section .pl-smw,div#p>svg>foreignObject>section .pl-v{color:#e36209}div#p>svg>foreignObject>section .pl-bu{color:#b31d28}div#p>svg>foreignObject>section .pl-ii{background-color:#b31d28;color:#fafbfc}div#p>svg>foreignObject>section .pl-c2{background-color:#d73a49;color:#fafbfc}div#p>svg>foreignObject>section .pl-c2:before{content:"^M"}div#p>svg>foreignObject>section .pl-sr .pl-cce{color:#22863a;font-weight:700}div#p>svg>foreignObject>section .pl-ml{color:#735c0f}div#p>svg>foreignObject>section .pl-mh,div#p>svg>foreignObject>section .pl-mh .pl-en,div#p>svg>foreignObject>section .pl-ms{color:#005cc5;font-weight:700}div#p>svg>foreignObject>section .pl-mi{color:#24292e;font-style:italic}div#p>svg>foreignObject>section .pl-mb{color:#24292e;font-weight:700}div#p>svg>foreignObject>section .pl-md{background-color:#ffeef0;color:#b31d28}div#p>svg>foreignObject>section .pl-mi1{background-color:#f0fff4;color:#22863a}div#p>svg>foreignObject>section .pl-mc{background-color:#ffebda;color:#e36209}div#p>svg>foreignObject>section .pl-mi2{background-color:#005cc5;color:#f6f8fa}div#p>svg>foreignObject>section .pl-mdr{color:#6f42c1;font-weight:700}div#p>svg>foreignObject>section .pl-ba{color:#586069}div#p>svg>foreignObject>section .pl-sg{color:#959da5}div#p>svg>foreignObject>section .pl-corl{color:#032f62;text-decoration:underline}div#p>svg>foreignObject>section details{display:block}div#p>svg>foreignObject>section summary{display:list-item}div#p>svg>foreignObject>section a{background-color:transparent}div#p>svg>foreignObject>section a:active,div#p>svg>foreignObject>section a:hover{outline-width:0}div#p>svg>foreignObject>section strong{font-weight:inherit;font-weight:bolder}div#p>svg>foreignObject>section h1{margin:.67em 0}div#p>svg>foreignObject>section img{border-style:none}div#p>svg>foreignObject>section code,div#p>svg>foreignObject>section kbd,div#p>svg>foreignObject>section pre{font-family:monospace,monospace;font-size:1em}div#p>svg>foreignObject>section hr{box-sizing:content-box;overflow:visible}div#p>svg>foreignObject>section input{font:inherit;margin:0;overflow:visible}div#p>svg>foreignObject>section [type=checkbox]{padding:0}div#p>svg>foreignObject>section *,div#p>svg>foreignObject>section [type=checkbox]{box-sizing:border-box}div#p>svg>foreignObject>section input{font-family:inherit;font-size:inherit;line-height:inherit}div#p>svg>foreignObject>section a{color:#0366d6;text-decoration:none}div#p>svg>foreignObject>section a:hover{text-decoration:underline}div#p>svg>foreignObject>section strong{font-weight:600}div#p>svg>foreignObject>section hr{background:transparent;border-bottom:1px solid #dfe2e5;height:0;margin:15px 0;overflow:hidden}div#p>svg>foreignObject>section hr:after,div#p>svg>foreignObject>section hr:before{content:"";display:table}div#p>svg>foreignObject>section hr:after{clear:both}div#p>svg>foreignObject>section table{border-collapse:collapse;border-spacing:0}div#p>svg>foreignObject>section td,div#p>svg>foreignObject>section th{padding:0}div#p>svg>foreignObject>section details summary{cursor:pointer}div#p>svg>foreignObject>section h1,div#p>svg>foreignObject>section h2,div#p>svg>foreignObject>section h3,div#p>svg>foreignObject>section h4,div#p>svg>foreignObject>section h5,div#p>svg>foreignObject>section h6{margin-bottom:0;margin-top:0}div#p>svg>foreignObject>section h1{font-size:32px}div#p>svg>foreignObject>section h1,div#p>svg>foreignObject>section h2{font-weight:600}div#p>svg>foreignObject>section h2{font-size:24px}div#p>svg>foreignObject>section h3{font-size:20px}div#p>svg>foreignObject>section h3,div#p>svg>foreignObject>section h4{font-weight:600}div#p>svg>foreignObject>section h4{font-size:16px}div#p>svg>foreignObject>section h5{font-size:14px}div#p>svg>foreignObject>section h5,div#p>svg>foreignObject>section h6{font-weight:600}div#p>svg>foreignObject>section h6{font-size:12px}div#p>svg>foreignObject>section p{margin-bottom:10px;margin-top:0}div#p>svg>foreignObject>section blockquote{margin:0}div#p>svg>foreignObject>section ol,div#p>svg>foreignObject>section ul{margin-bottom:0;margin-top:0;padding-left:0}div#p>svg>foreignObject>section ol ol,div#p>svg>foreignObject>section ul ol{list-style-type:lower-roman}div#p>svg>foreignObject>section ol ol ol,div#p>svg>foreignObject>section ol ul ol,div#p>svg>foreignObject>section ul ol ol,div#p>svg>foreignObject>section ul ul ol{list-style-type:lower-alpha}div#p>svg>foreignObject>section dd{margin-left:0}div#p>svg>foreignObject>section code,div#p>svg>foreignObject>section pre{font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;font-size:12px}div#p>svg>foreignObject>section pre{margin-bottom:0;margin-top:0}div#p>svg>foreignObject>section input::-webkit-inner-spin-button,div#p>svg>foreignObject>section input::-webkit-outer-spin-button{-webkit-appearance:none;appearance:none;margin:0}div#p>svg>foreignObject>section .border{border:1px solid #e1e4e8!important}div#p>svg>foreignObject>section .border-0{border:0!important}div#p>svg>foreignObject>section .border-bottom{border-bottom:1px solid #e1e4e8!important}div#p>svg>foreignObject>section .rounded-1{border-radius:3px!important}div#p>svg>foreignObject>section .bg-white{background-color:#fff!important}div#p>svg>foreignObject>section .bg-gray-light{background-color:#fafbfc!important}div#p>svg>foreignObject>section .text-gray-light{color:#6a737d!important}div#p>svg>foreignObject>section .mb-0{margin-bottom:0!important}div#p>svg>foreignObject>section .my-2{margin-bottom:8px!important;margin-top:8px!important}div#p>svg>foreignObject>section .py-0{padding-bottom:0!important;padding-top:0!important}div#p>svg>foreignObject>section .py-2{padding-bottom:8px!important;padding-top:8px!important}div#p>svg>foreignObject>section .pl-3,div#p>svg>foreignObject>section .px-3{padding-left:16px!important}div#p>svg>foreignObject>section .px-3{padding-right:16px!important}div#p>svg>foreignObject>section .f6{font-size:12px!important}div#p>svg>foreignObject>section .lh-condensed{line-height:1.25!important}div#p>svg>foreignObject>section .text-bold{font-weight:600!important}div#p>svg>foreignObject>section:after,div#p>svg>foreignObject>section:before{
+  /* content:""; */display:table}div#p>svg>foreignObject>section:after{clear:both}div#p>svg>foreignObject>section>:first-child{margin-top:0!important}div#p>svg>foreignObject>section>:last-child{margin-bottom:0!important}div#p>svg>foreignObject>section a:not([href]){color:inherit;text-decoration:none}div#p>svg>foreignObject>section blockquote,div#p>svg>foreignObject>section dl,div#p>svg>foreignObject>section ol,div#p>svg>foreignObject>section p,div#p>svg>foreignObject>section pre,div#p>svg>foreignObject>section table,div#p>svg>foreignObject>section ul{margin-bottom:16px;margin-top:0}div#p>svg>foreignObject>section hr{background-color:#e1e4e8;border:0;height:.25em;margin:24px 0;padding:0}div#p>svg>foreignObject>section blockquote{border-left:.25em solid #dfe2e5;color:#6a737d;padding:0 1em}div#p>svg>foreignObject>section blockquote>:first-child{margin-top:0}div#p>svg>foreignObject>section blockquote>:last-child{margin-bottom:0}div#p>svg>foreignObject>section kbd{border:1px solid #c6cbd1;border-bottom-color:#959da5;box-shadow:inset 0 -1px 0 #959da5;font-size:11px}div#p>svg>foreignObject>section h1,div#p>svg>foreignObject>section h2,div#p>svg>foreignObject>section h3,div#p>svg>foreignObject>section h4,div#p>svg>foreignObject>section h5,div#p>svg>foreignObject>section h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}div#p>svg>foreignObject>section h1{font-size:2em}div#p>svg>foreignObject>section h1,div#p>svg>foreignObject>section h2{border-bottom:1px solid #eaecef;padding-bottom:.3em}div#p>svg>foreignObject>section h2{font-size:1.5em}div#p>svg>foreignObject>section h3{font-size:1.25em}div#p>svg>foreignObject>section h4{font-size:1em}div#p>svg>foreignObject>section h5{font-size:.875em}div#p>svg>foreignObject>section h6{color:#6a737d;font-size:.85em}div#p>svg>foreignObject>section ol,div#p>svg>foreignObject>section ul{padding-left:2em}div#p>svg>foreignObject>section ol ol,div#p>svg>foreignObject>section ol ul,div#p>svg>foreignObject>section ul ol,div#p>svg>foreignObject>section ul ul{margin-bottom:0;margin-top:0}div#p>svg>foreignObject>section li{word-wrap:break-all}div#p>svg>foreignObject>section li>p{margin-top:16px}div#p>svg>foreignObject>section li+li{margin-top:.25em}div#p>svg>foreignObject>section dl{padding:0}div#p>svg>foreignObject>section dl dt{font-size:1em;font-style:italic;font-weight:600;margin-top:16px;padding:0}div#p>svg>foreignObject>section dl dd{margin-bottom:16px;padding:0 16px}div#p>svg>foreignObject>section table{display:block;overflow:auto;width:100%}div#p>svg>foreignObject>section table th{font-weight:600}div#p>svg>foreignObject>section table td,div#p>svg>foreignObject>section table th{border:1px solid #dfe2e5;padding:6px 13px}div#p>svg>foreignObject>section table tr{background-color:#fff;border-top:1px solid #c6cbd1}div#p>svg>foreignObject>section table tr:nth-child(2n){background-color:#f6f8fa}div#p>svg>foreignObject>section img{background-color:#fff;box-sizing:content-box;max-width:100%}div#p>svg>foreignObject>section img[align=right]{padding-left:20px}div#p>svg>foreignObject>section img[align=left]{padding-right:20px}div#p>svg>foreignObject>section code{background-color:rgba(27,31,35,.05);border-radius:3px;font-size:85%;margin:0;padding:.2em .4em}div#p>svg>foreignObject>section pre{word-wrap:normal}div#p>svg>foreignObject>section pre>code{background:transparent;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}div#p>svg>foreignObject>section .highlight{margin-bottom:16px}div#p>svg>foreignObject>section .highlight pre{margin-bottom:0;word-break:normal}div#p>svg>foreignObject>section pre{background-color:#f6f8fa;border-radius:3px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}div#p>svg>foreignObject>section pre code{background-color:transparent;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0;word-wrap:normal}div#p>svg>foreignObject>section .commit-tease-sha{color:#444d56;display:inline-block;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;font-size:90%}div#p>svg>foreignObject>section .blob-wrapper{border-bottom-left-radius:3px;border-bottom-right-radius:3px;overflow-x:auto;overflow-y:hidden}div#p>svg>foreignObject>section .blob-wrapper-embedded{max-height:240px;overflow-y:auto}div#p>svg>foreignObject>section .blob-num{-moz-user-select:none;-ms-user-select:none;-webkit-user-select:none;color:rgba(27,31,35,.3);cursor:pointer;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;font-size:12px;line-height:20px;min-width:50px;padding-left:10px;padding-right:10px;text-align:right;user-select:none;vertical-align:top;white-space:nowrap;width:1%}div#p>svg>foreignObject>section .blob-num:hover{color:rgba(27,31,35,.6)}div#p>svg>foreignObject>section .blob-num:before{content:attr(data-line-number)}div#p>svg>foreignObject>section .blob-code{line-height:20px;padding-left:10px;padding-right:10px;position:relative;vertical-align:top}div#p>svg>foreignObject>section .blob-code-inner{color:#24292e;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;font-size:12px;overflow:visible;white-space:pre;word-wrap:normal}div#p>svg>foreignObject>section .pl-token.active,div#p>svg>foreignObject>section .pl-token:hover{background:#ffea7f;cursor:pointer}div#p>svg>foreignObject>section kbd{background-color:#fafbfc;border:1px solid #d1d5da;border-bottom-color:#c6cbd1;border-radius:3px;box-shadow:inset 0 -1px 0 #c6cbd1;color:#444d56;display:inline-block;font:11px SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;line-height:10px;padding:3px 5px;vertical-align:middle}div#p>svg>foreignObject>section :checked+.radio-label{border-color:#0366d6;position:relative;z-index:1}div#p>svg>foreignObject>section .tab-size[data-tab-size="1"]{-moz-tab-size:1;-o-tab-size:1;tab-size:1}div#p>svg>foreignObject>section .tab-size[data-tab-size="2"]{-moz-tab-size:2;-o-tab-size:2;tab-size:2}div#p>svg>foreignObject>section .tab-size[data-tab-size="3"]{-moz-tab-size:3;-o-tab-size:3;tab-size:3}div#p>svg>foreignObject>section .tab-size[data-tab-size="4"]{-moz-tab-size:4;-o-tab-size:4;tab-size:4}div#p>svg>foreignObject>section .tab-size[data-tab-size="5"]{-moz-tab-size:5;-o-tab-size:5;tab-size:5}div#p>svg>foreignObject>section .tab-size[data-tab-size="6"]{-moz-tab-size:6;-o-tab-size:6;tab-size:6}div#p>svg>foreignObject>section .tab-size[data-tab-size="7"]{-moz-tab-size:7;-o-tab-size:7;tab-size:7}div#p>svg>foreignObject>section .tab-size[data-tab-size="8"]{-moz-tab-size:8;-o-tab-size:8;tab-size:8}div#p>svg>foreignObject>section .tab-size[data-tab-size="9"]{-moz-tab-size:9;-o-tab-size:9;tab-size:9}div#p>svg>foreignObject>section .tab-size[data-tab-size="10"]{-moz-tab-size:10;-o-tab-size:10;tab-size:10}div#p>svg>foreignObject>section .tab-size[data-tab-size="11"]{-moz-tab-size:11;-o-tab-size:11;tab-size:11}div#p>svg>foreignObject>section .tab-size[data-tab-size="12"]{-moz-tab-size:12;-o-tab-size:12;tab-size:12}div#p>svg>foreignObject>section .task-list-item{list-style-type:none}div#p>svg>foreignObject>section .task-list-item+.task-list-item{margin-top:3px}div#p>svg>foreignObject>section .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}div#p>svg>foreignObject>section hr{border-bottom-color:#eee}div#p>svg>foreignObject>section .pl-0{padding-left:0!important}div#p>svg>foreignObject>section .pl-1{padding-left:4px!important}div#p>svg>foreignObject>section .pl-2{padding-left:8px!important}div#p>svg>foreignObject>section .pl-3{padding-left:16px!important}div#p>svg>foreignObject>section .pl-4{padding-left:24px!important}div#p>svg>foreignObject>section .pl-5{padding-left:32px!important}div#p>svg>foreignObject>section .pl-6{padding-left:40px!important}div#p>svg>foreignObject>section .pl-7{padding-left:48px!important}div#p>svg>foreignObject>section .pl-8{padding-left:64px!important}div#p>svg>foreignObject>section .pl-9{padding-left:80px!important}div#p>svg>foreignObject>section .pl-10{padding-left:96px!important}div#p>svg>foreignObject>section .pl-11{padding-left:112px!important}div#p>svg>foreignObject>section .pl-12{padding-left:128px!important}div#p>svg>foreignObject>section .hljs{display:block;background:#fff;padding:.5em;color:#333;overflow-x:auto}div#p>svg>foreignObject>section .hljs-comment,div#p>svg>foreignObject>section .hljs-meta{color:#969896}div#p>svg>foreignObject>section .hljs-emphasis,div#p>svg>foreignObject>section .hljs-quote,div#p>svg>foreignObject>section .hljs-strong,div#p>svg>foreignObject>section .hljs-template-variable,div#p>svg>foreignObject>section .hljs-variable{color:#df5000}div#p>svg>foreignObject>section .hljs-keyword,div#p>svg>foreignObject>section .hljs-selector-tag,div#p>svg>foreignObject>section .hljs-type{color:#d73a49}div#p>svg>foreignObject>section .hljs-attribute,div#p>svg>foreignObject>section .hljs-bullet,div#p>svg>foreignObject>section .hljs-literal,div#p>svg>foreignObject>section .hljs-symbol{color:#0086b3}div#p>svg>foreignObject>section .hljs-name,div#p>svg>foreignObject>section .hljs-section{color:#63a35c}div#p>svg>foreignObject>section .hljs-tag{color:#333}div#p>svg>foreignObject>section .hljs-attr,div#p>svg>foreignObject>section .hljs-selector-attr,div#p>svg>foreignObject>section .hljs-selector-class,div#p>svg>foreignObject>section .hljs-selector-id,div#p>svg>foreignObject>section .hljs-selector-pseudo,div#p>svg>foreignObject>section .hljs-title{color:#6f42c1}div#p>svg>foreignObject>section .hljs-addition{color:#55a532;background-color:#eaffea}div#p>svg>foreignObject>section .hljs-deletion{color:#bd2c00;background-color:#ffecec}div#p>svg>foreignObject>section .hljs-link{text-decoration:underline}div#p>svg>foreignObject>section .hljs-number{color:#005cc5}div#p>svg>foreignObject>section .hljs-string{color:#032f62}div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{max-height:563px}div#p>svg>foreignObject>section h1{color:#246;font-size:1.6em}div#p>svg>foreignObject>section h1,div#p>svg>foreignObject>section h2{border-bottom:none}div#p>svg>foreignObject>section h2{font-size:1.3em}div#p>svg>foreignObject>section h3{font-size:1.1em}div#p>svg>foreignObject>section h4{font-size:1.05em}div#p>svg>foreignObject>section h5{font-size:1em}div#p>svg>foreignObject>section h6{font-size:.9em}div#p>svg>foreignObject>section h1 strong,div#p>svg>foreignObject>section h2 strong,div#p>svg>foreignObject>section h3 strong,div#p>svg>foreignObject>section h4 strong,div#p>svg>foreignObject>section h5 strong,div#p>svg>foreignObject>section h6 strong{font-weight:inherit;color:#48c}div#p>svg>foreignObject>section hr{height:0;padding-top:.25em}div#p>svg>foreignObject>section pre{border:1px solid #999;line-height:1.15;overflow:visible}div#p>svg>foreignObject>section pre code svg[data-marp-fitting=svg]{max-height:529px}div#p>svg>foreignObject>section footer,div#p>svg>foreignObject>section header{margin:0;position:absolute;left:30px;color:hsla(0,0%,40%,.75);font-size:18px}div#p>svg>foreignObject>section header{top:21px}div#p>svg>foreignObject>section footer{bottom:21px}div#p>svg>foreignObject>section{-webkit-box-align:stretch;align-items:stretch;background:#fff;display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;flex-wrap:nowrap;font-size:29px;height:720px;-webkit-box-pack:center;justify-content:center;padding:78.5px;width:1280px}div#p>svg>foreignObject>section>:last-child,div#p>svg>foreignObject>section[data-footer]>:nth-last-child(2){margin-bottom:0}div#p>svg>foreignObject>section>:first-child,div#p>svg>foreignObject>section>header:first-child+*{margin-top:0}div#p>svg>foreignObject>section:after{position:absolute;padding:0;right:30px;bottom:21px;font-size:24px;color:#777}div#p>svg>foreignObject>section.invert{background-color:#222;color:#e6eaf0}div#p>svg>foreignObject>section.invert:after{color:#999}div#p>svg>foreignObject>section.invert img{background-color:transparent}div#p>svg>foreignObject>section.invert a{color:#50b3ff}div#p>svg>foreignObject>section.invert h1{color:#a3c5e7}div#p>svg>foreignObject>section.invert h2,div#p>svg>foreignObject>section.invert h3,div#p>svg>foreignObject>section.invert h4,div#p>svg>foreignObject>section.invert h5{color:#ebeff5}div#p>svg>foreignObject>section.invert blockquote,div#p>svg>foreignObject>section.invert h6{border-color:#3d3f43;color:#939699}div#p>svg>foreignObject>section.invert h1 strong,div#p>svg>foreignObject>section.invert h2 strong,div#p>svg>foreignObject>section.invert h3 strong,div#p>svg>foreignObject>section.invert h4 strong,div#p>svg>foreignObject>section.invert h5 strong,div#p>svg>foreignObject>section.invert h6 strong{color:#7bf}div#p>svg>foreignObject>section.invert hr{background-color:#3d3f43}div#p>svg>foreignObject>section.invert footer,div#p>svg>foreignObject>section.invert header{color:hsla(0,0%,60%,.75)}div#p>svg>foreignObject>section.invert code,div#p>svg>foreignObject>section.invert kbd{background-color:#111}div#p>svg>foreignObject>section.invert kbd{border-color:#666;box-shadow:inset 0 -1px 0 #555;color:#e6eaf0}div#p>svg>foreignObject>section.invert table tr{background-color:#12181d;border-color:#60657b}div#p>svg>foreignObject>section.invert table tr:nth-child(2n){background-color:#1b2024}div#p>svg>foreignObject>section.invert table td,div#p>svg>foreignObject>section.invert table th{border-color:#5b5e61}div#p>svg>foreignObject>section.invert pre{background-color:#0a0e12;border-color:#777}div#p>svg>foreignObject>section.invert pre code{background-color:transparent}div#p>svg>foreignObject>section[data-color] h1,div#p>svg>foreignObject>section[data-color] h2,div#p>svg>foreignObject>section[data-color] h3,div#p>svg>foreignObject>section[data-color] h4,div#p>svg>foreignObject>section[data-color] h5,div#p>svg>foreignObject>section[data-color] h6{color:currentColor}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]{display:block!important;padding:0!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#p>svg>foreignObject>section[data-marpit-advanced-background=content],div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button></div><div id="p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1">
+<h1>前言</h1>
+<p>本文分为上下两个篇幅，第一部分是基础数据知识，包括了：模运算、最大公约数、辗转相除法、扩展欧几里得算法、模运算的逆元、欧拉函数、欧拉定理等。</p>
+<p>第二部分是RSA算法的介绍与代码部分，包括了：算法准备、数据加解密、RSA算法证明、蒙哥马利算法、RSA算法代码与示例等。</p>
+<p>希望读者通过阅读此文，能够将RSA算法的来龙去脉搞清楚，同时可以基于RUST语言开发一个简单的RSA算法模拟。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2">
+<h1>基础数学知识点</h1>
+<h2>模运算</h2>
+<p>已知正整数a，b，我们求出a除以b的商与余数：</p>
+<p><code>b * q + r = a</code></p>
+<p>其中q是商，r是余数，也可以记做：</p>
+<p><code>a ≡ r (mod b)</code>，这里的mod即称为模运算，以上表达式读作“a模b等于r”或者“a模b余r”。</p>
+<p>这里举几个举例：</p>
+<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-symbol">9 </span>≡ <span class="hljs-number">1</span> (<span class="hljs-keyword">mod</span> <span class="hljs-number">4</span>)
+<span class="hljs-symbol">100 </span>≡ <span class="hljs-number">2</span> (<span class="hljs-keyword">mod</span> <span class="hljs-number">7</span>)
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3">
+<p>所有mod b值相同的整数构成的集合，称为一个<a href="https://baike.baidu.com/item/%E5%89%A9%E4%BD%99%E7%B1%BB/3712708">剩余类</a>。例如：集合<code>{3n+1}</code>即为mod 3的一个剩余类。对于整数n，其剩余类个数为n个，分别对应mod n余0、1、2...n-1。任何整数a在且仅在mod n的一个剩余类中。</p>
+<p>所谓“<a href="https://baike.baidu.com/item/%E5%89%A9%E4%BD%99%E7%B3%BB">剩余系</a>”，就是指对于某一个特定的正整数n，一个整数集中的数模n所得的余数域。例如：集合<code>{2, 5, 9}</code>模3的剩余系为：<code>{2, 2, 0}</code>。</p>
+<p>从模n的每个剩余类中各取一个数，得到一个由n个数组成的集合，叫做模n的一个<a href="https://baike.baidu.com/item/%E5%AE%8C%E5%85%A8%E5%89%A9%E4%BD%99%E7%B3%BB">完全剩余系</a>。例如，集合{3, 4, 5}为模3的一个完全剩余系。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4">
+<p>在与模n互素的全体剩余类中，从每一个类中各任取一个数作为代表组成的集合，叫做模m的一个简化剩余系，或称作缩系。例如，模5的一个简化剩余系是<code>{1，2，3，4}</code>，模10的一个简化剩余系是<code>{1，3，7，9}</code>，模18的一个简化剩余系是<code>{1，5，7，11，13，17}</code>。</p>
+<p>和模运算相关的定理有蛮多的，例如：<a href="https://baike.baidu.com/item/%E5%A8%81%E5%B0%94%E9%80%8A%E5%AE%9A%E7%90%86">威尔逊定理</a>，<a href="https://baike.baidu.com/item/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86">费马小定理</a>，<a href="https://baike.baidu.com/item/%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86">欧拉定理</a>，感兴趣的同学可以移步仔细阅读体会。本文稍后会介绍<em><strong>欧拉定理</strong></em>。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5">
+<h2>最大公约数</h2>
+<p>最大公约数，是指能够被两个正整数m，n整除的最大的正整数，记做：<code>gcd(m, n)</code></p>
+<p>这里举几个举例：</p>
+<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>gcd(<span class="hljs-number">2</span>, <span class="hljs-number">6</span>) = <span class="hljs-number">2</span>
+gcd(<span class="hljs-number">6</span>, <span class="hljs-number">39</span>) = <span class="hljs-number">3</span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6">
+<h2>辗转相除法</h2>
+<p>辗转相除法又称欧几里德算法，是指用于计算两个正整数m，n的最大公约数。应用领域有数学和计算机两个方面。计算公式：</p>
+<p><code>gcd(m,n) = gcd(n, m mod n)</code></p>
+<p>例如，我们要计算<code>gcd(62, 26)</code></p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th style="text-align:right">公式</th>
+<th style="text-align:right">m mod n</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">gcd(62, 26)</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">gcd(26, 10)</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">gcd(10, 6)</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:right">gcd(6, 4)</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align:right">gcd(4, 2)</td>
+<td style="text-align:right">0</td>
+</tr>
+</tbody>
+</table>
+<p>这样，gcd(62, 26) = 2</p>
+<p>具体证明请参考<a href="https://baike.baidu.com/item/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95">这里</a>。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7">
+<p>这里是辗转相除法的RUST实现代码，或者参考<a href="https://github.com/alexxuyang/cryptography-algo/blob/master/src/gcd.rs">这里</a>。</p>
+<pre><code class="language-RUST"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">gcd</span></span>(x: <span class="hljs-built_in">u64</span>, y: <span class="hljs-built_in">u64</span>) -&gt; <span class="hljs-built_in">u64</span> {
+    <span class="hljs-keyword">let</span> remainder = x % y;
+
+    <span class="hljs-keyword">if</span> remainder == <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> y;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> gcd(y, remainder);
+    }
+}
+
+<span class="hljs-meta">#[cfg(test)]</span>
+<span class="hljs-keyword">mod</span> tests {
+    <span class="hljs-keyword">use</span> super::*;
+
+    <span class="hljs-meta">#[test]</span>
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">gcd_works</span></span>() {
+        <span class="hljs-built_in">assert_eq!</span>(gcd(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>), <span class="hljs-number">2</span>);
+        <span class="hljs-built_in">assert_eq!</span>(gcd(<span class="hljs-number">6</span>, <span class="hljs-number">27</span>), <span class="hljs-number">3</span>);
+        <span class="hljs-built_in">assert_eq!</span>(gcd(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>), <span class="hljs-number">2</span>);
+        <span class="hljs-built_in">assert_eq!</span>(gcd(<span class="hljs-number">27</span>, <span class="hljs-number">6</span>), <span class="hljs-number">3</span>);
+    }
+}
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8">
+<h2>扩展欧几里得算法</h2>
+<p>扩展欧几里得算法（Extended Euclidean Algorithm，下面简称EEA）是欧几里得算法（又叫辗转相除法）的扩展。该算法基于这个一样假设，对于整数a，b，除了计算其gcd值外，我们是否可以找到整数x、y（其中一个很可能是负数），使得：ax + by = gcd(a, b)。</p>
+<p>在欧几里得算法计算过程中，我们仅仅使用到了每次迭代的余数，EEA则使用到了商。下面我们使用一个例子，来看看具体的一个步骤：</p>
+<p>假设：a = 240，b = 46</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9">
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th style="text-align:right">商 Q<sub>i</sub></th>
+<th style="text-align:right">余数 R<sub>i</sub></th>
+<th style="text-align:right">X<sub>i</sub></th>
+<th style="text-align:right">Y<sub>i</sub></th>
+<th style="text-align:right">Sum<sub>i</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right"></td>
+<td style="text-align:right">240</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right"></td>
+<td style="text-align:right">46</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">240 / 46 = 5</td>
+<td style="text-align:right">240 % 46 = 10</td>
+<td style="text-align:right">1 - 5 * 0 = 1</td>
+<td style="text-align:right">0 - 5 * 1 = -5</td>
+<td style="text-align:right">1 * 240 + (-5) * 46 = 10</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:right">46 / 10 = 4</td>
+<td style="text-align:right">46 % 10 = 6</td>
+<td style="text-align:right">0 - 4 * 1 = -4</td>
+<td style="text-align:right">1- 4 * (-5) = 21</td>
+<td style="text-align:right">(-4) * 240 + 21 * 46 = 6</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align:right">10 / 6 = 1</td>
+<td style="text-align:right">10 % 6 = 4</td>
+<td style="text-align:right">1 - 1 * (-4) = 5</td>
+<td style="text-align:right">(-5) - 1 * 21 = -26</td>
+<td style="text-align:right">5 * 240 + (-26) * 46 = 4</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align:right">6 / 4 = 1</td>
+<td style="text-align:right">6 % 4 = 2</td>
+<td style="text-align:right">(-4) - 1 * 5 = -9</td>
+<td style="text-align:right">21 - 1 * (-26) = 47</td>
+<td style="text-align:right">(-9) * 240 + 47 * 46 = 2</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align:right">4 / 2 = 2</td>
+<td style="text-align:right">4 % 2 = 0</td>
+<td style="text-align:right">5 - 2 * (-9) = 23</td>
+<td style="text-align:right">(-26) - 2 * 47 = -120</td>
+<td style="text-align:right">23 * 240 + (-120) * 46 = 0</td>
+</tr>
+</tbody>
+</table>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10">
+<p>在上面的步骤中，如果只看左侧的三列，这就是辗转相除法的计算步骤。第七步算出余数R<sub>7</sub>是零，那么这两个数的gcd则为R<sub>6</sub> = 2。</p>
+<p>这里，在右侧又多了三列，其中X<sub>i</sub>与Y<sub>i</sub>都使用到了商Q<sub>i</sub>, 其计算公式为：</p>
+<p>X<sub>i</sub> = X<sub>i-2</sub> - Qi * X<sub>i-1</sub></p>
+<p>Y<sub>i</sub> = Y<sub>i-2</sub> - Qi * Y<sub>i-1</sub></p>
+<p>Sum<sub>i</sub> = X<sub>i</sub> * a + Y<sub>i</sub> * b</p>
+<p>算法迭代的第一步，我们看第三行，X<sub>3</sub> = 1, Y<sub>3</sub> = -5, 代入公式算出：Sum<sub>3</sub> = 10 = R<sub>3</sub></p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11">
+<p>根据X<sub>i</sub>与Y<sub>i</sub>的计算公式，不难得出每一步中，Sum<sub>i</sub> = R<sub>i</sub>。具体推演过程中也验证了这个想法。</p>
+<p>这样，根据这个迭代的过程，到了第7步，我们算出了gcd是2，那么反推到第6步算出的X<sub>6</sub>与Y<sub>6</sub>，即是我们需要的解，使得：<code>(-9) * 240 + 47 * 46 = 2</code>。</p>
+<p>EEA的具体证明请参考<a href="https://baike.baidu.com/item/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95">这里</a>。</p>
+<p>好了，说了这么多，这个EEA究竟用来干啥用？？？</p>
+<p>好吧，且听我们下一节分解哈<img class="emoji" draggable="false" alt="😏" src="https://twemoji.maxcdn.com/2/svg/1f60f.svg" data-marp-twemoji=""/><img class="emoji" draggable="false" alt="😏" src="https://twemoji.maxcdn.com/2/svg/1f60f.svg" data-marp-twemoji=""/><img class="emoji" draggable="false" alt="😏" src="https://twemoji.maxcdn.com/2/svg/1f60f.svg" data-marp-twemoji=""/></p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12">
+<h2>模运算的逆元</h2>
+<p>逆元是抽象代数中的一个概念，指在群G中任意一个元素a，都在G中有唯一的逆元a'，具有性质：</p>
+<p><code>a · a' = a' · a = e</code> ( · 为该群中定义的运算)。其中，e为该群的单位元。</p>
+<p>将这个概念类推到模运算中，模运算单位元是 1。</p>
+<p>那么对于整数n来说，逆元的定义为，对于任意a，存在a'，使得：</p>
+<p><code>a * a' ≡ 1 (mod n)</code></p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13">
+<p>定义逆元函数：</p>
+<p><code>inv(a, n) = a'</code></p>
+<p>我们举几个例子：</p>
+<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>inv(<span class="hljs-number">5</span>, <span class="hljs-number">11</span>) = <span class="hljs-number">9</span>
+inv(<span class="hljs-number">7</span>, <span class="hljs-number">13</span>) = <span class="hljs-number">2</span>
+inv(<span class="hljs-number">10</span>, <span class="hljs-number">31</span>) = <span class="hljs-number">28</span>
+inv(<span class="hljs-number">12</span>, <span class="hljs-number">29</span>) = <span class="hljs-number">17</span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14">
+<p>定理：假设p为质数，对于任何正整数a，a &lt; p，那么存在唯一的逆元a'，a' &lt; p，使得：</p>
+<p><code>a * a' ≡ 1 (mod p)</code></p>
+<p>使用反证法可以证明该定理，同学们自己开一下脑洞。</p>
+<p>假设已知一个大质数p，例如质数10888869450418352160768000001，我们又知道a，怎么求出a的逆元呢？我们可以穷举，从2开始，一直到p-2，计算a * a' mod p的值，直到等于1为止。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15">
+<p>那么，是否还有更好的方法呢？有，方法之一就是使用EEA算法。</p>
+<p>因为p是质数，对于任意a &lt; p，gcd(a, p) = 1</p>
+<p>又根据EEA，我们知道可以求得：x和y，使得：a * x + p * y = gcd(a, p) = 1</p>
+<p>所以：<strong>a * x ≡ 1 (mod p)</strong></p>
+<p><strong>所以a的逆元就是x</strong>。这里需要注意，有可能此方法算出的x是负数，或者大小超过了p，所以最后需要对x做一个优化。详见代码。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16">
+<p>这里是EEA和INV的RUST实现代码，或者参考<a href="https://github.com/alexxuyang/cryptography-algo/blob/master/src/ext_euclid.rs">这里</a>。</p>
+<pre><code class="language-RUST"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">ext_euclid</span></span>(x: <span class="hljs-built_in">i64</span>, y: <span class="hljs-built_in">i64</span>) -&gt; (<span class="hljs-built_in">i64</span>, <span class="hljs-built_in">i64</span>, <span class="hljs-built_in">i64</span>) {
+    <span class="hljs-keyword">let</span> (<span class="hljs-keyword">mut</span> old_r, <span class="hljs-keyword">mut</span> r) = (x, y);
+    <span class="hljs-keyword">let</span> (<span class="hljs-keyword">mut</span> old_s, <span class="hljs-keyword">mut</span> s) = (<span class="hljs-number">1</span>, <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">let</span> (<span class="hljs-keyword">mut</span> old_t, <span class="hljs-keyword">mut</span> t) = (<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
+
+    <span class="hljs-keyword">if</span> y == <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> (<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, x);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">while</span> r != <span class="hljs-number">0</span> {
+            <span class="hljs-keyword">let</span> q = old_r / r;
+
+            <span class="hljs-keyword">let</span> t_r = r;
+            r = old_r - q * r;
+            old_r = t_r;
+
+            <span class="hljs-keyword">let</span> t_s = s;
+            s = old_s - q * s;
+            old_s = t_s;
+
+            <span class="hljs-keyword">let</span> t_t = t;
+            t = old_t - q * t;
+            old_t = t_t;
+        }
+        <span class="hljs-keyword">return</span> (old_s, old_t, old_r);
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">inv</span></span>(a: <span class="hljs-built_in">i64</span>, p: <span class="hljs-built_in">i64</span>) -&gt; <span class="hljs-built_in">i64</span> {
+    <span class="hljs-keyword">let</span> (r, _, _) = ext_euclid(a, p);
+    <span class="hljs-keyword">return</span> ((r % p) + p) % p
+}
+
+<span class="hljs-meta">#[cfg(test)]</span>
+<span class="hljs-keyword">mod</span> tests {
+    <span class="hljs-keyword">use</span> super::*;
+
+    <span class="hljs-meta">#[test]</span>
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">ext_euclid_works</span></span>() {
+        <span class="hljs-built_in">assert_eq!</span>(inv(<span class="hljs-number">5</span>, <span class="hljs-number">11</span>), <span class="hljs-number">9</span>);
+        <span class="hljs-built_in">assert_eq!</span>(inv(<span class="hljs-number">7</span>, <span class="hljs-number">13</span>), <span class="hljs-number">2</span>);
+        <span class="hljs-built_in">assert_eq!</span>(inv(<span class="hljs-number">10</span>, <span class="hljs-number">31</span>), <span class="hljs-number">28</span>);
+        <span class="hljs-built_in">assert_eq!</span>(inv(<span class="hljs-number">12</span>, <span class="hljs-number">29</span>), <span class="hljs-number">17</span>);
+    }
+}
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17">
+<h2>欧拉函数</h2>
+<p>对正整数n，欧拉函数是小于或等于n的正整数中与n互质的数的数目（因此φ(1) = 1）。此函数以其首名研究者欧拉命名(Euler's totient function)，它又称为Euler's totient function、φ函数、欧拉商数等。 例如φ(8) = 4，因为1,3,5,7均和8互质。</p>
+<p>欧拉函数如下所示：</p>
+<p><img src="http://latex.codecogs.com/gif.latex?%5Cvarphi(x)=x%5Cprod_%7Bi=1%7D%5E%7Bn%7D%5Cleft(1-%5Cfrac%7B1%7D%7Bp_%7Bi%7D%7D%5Cright)" alt="" /></p>
+<p>其中，x有n个质因数，p<sub>i</sub>是第i个质因数。例如我们需要计算φ(8)，8的质因数只有2，那么：</p>
+<p>φ(8) = 8 * (1 - 1/2) = 8 * 1/2 = 4，正确</p>
+<p>对于任何质数p，φ(p) = p - 1</p>
+<p>对于任何质数p和q，φ(p * q) = (p - 1) * (q - 1)</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18">
+<h2>欧拉定理</h2>
+<p>欧拉定理（Euler Theorem，也称费马-欧拉定理或欧拉函数定理）是一个关于同余的性质。欧拉定理得名于瑞士数学家莱昂哈德·欧拉，该定理被认为是数学世界中最美妙的定理之一。欧拉定理实际上是费马小定理的推广。</p>
+<p>欧拉定理表明，若n,a为正整数，且n,a互质，则：</p>
+<p><img src="https://latex.codecogs.com/gif.latex?a%5E%7B%5Cvarphi(n)%7D&amp;space;%5Cequiv&amp;space;1(%5Cbmod&amp;space;n)" alt="" /></p>
+<p>其中，φ(n)是欧拉函数。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19">
+<p>这里做一个简洁的证明：</p>
+<p>将1-n中，与n互质的数，定义为集合A：{X1, X2 ... , X<sub>φ(n)</sub>}，可知总共有φ(n)个数。同时它们都与n互质。所以集合A是mod n的一个<strong>缩系</strong>。</p>
+<p>构造集合B：{Y1 = a * X1, Y2 = a * X2 ... , Y<sub>φ(n)</sub> = a * X<sub>φ(n)</sub>}，因为a、X<sub>i</sub>都与n互质，可知Y<sub>i</sub>也都与n互质。</p>
+<p>这样，集合B是否也是一个<strong>缩系</strong>？假设不是一个缩系，那么必存在i、j，使得：Y<sub>i</sub> ≡ Y<sub>j</sub> (mod n)</p>
+<p>可得：a * X<sub>i</sub> - a * X<sub>j</sub> ≡ 0 (mod n) =&gt; a * (X<sub>i</sub> - X<sub>j</sub>) ≡ 0 (mod n)</p>
+<p>由于a与n互质，可知：X<sub>i</sub> - X<sub>j</sub> ≡ 0 (mod n)，显然，这与X<sub>i</sub>的定义相矛盾，X<sub>i</sub>、X<sub>j</sub>是小于n的不同整数。</p>
+<p>所以，集合B也是一个<strong>缩系</strong>。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20">
+<p>这样，我们有两个mod n的缩系集合A、B，根据缩系的定义，将两个集合的各自元素求其积，可知这两个积mod n是相等的：</p>
+<p>(a * X1) * (a * X2) * (a * X<sub>φ(n)</sub>) ≡ X1* X2 * X<sub>φ(n)</sub> mod n</p>
+<p>=&gt; a<sup>φ(n)</sup> * (X1X2...X<sub>φ(n)</sub>) ≡ X1X2...X<sub>φ(n)</sub> mod n</p>
+<p>=&gt; (a<sup>φ(n)</sup> - 1) * (X1X2...X<sub>φ(n)</sub>) ≡ 0 mod n</p>
+<p>由于X<sub>i</sub>与n互质，可得：a<sup>φ(n)</sup> - 1 ≡ 0 mod n =&gt; a<sup>φ(n)</sup> ≡ 1 mod n，定理得证。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21">
+<h1>RSA算法</h1>
+<h2>综述</h2>
+<p>终于讲到RSA算法了，大家都还跟住的吧<img class="emoji" draggable="false" alt="😂" src="https://twemoji.maxcdn.com/2/svg/1f602.svg" data-marp-twemoji=""/><img class="emoji" draggable="false" alt="😂" src="https://twemoji.maxcdn.com/2/svg/1f602.svg" data-marp-twemoji=""/></p>
+<p>RSA算法是由Ron Rivest、Ad Shamir、Leonard Adleman，于1977年提出的，RSA就是他们三位名字的首字母拼在一起组成的。</p>
+<p>RSA是一种非对称加密算法，其核心思路是，alice公开自己的公钥K<sub>pub</sub>，同时仅仅只有alice知道自己的私钥K<sub>pri</sub>；bob使用K<sub>pub</sub>对数据m进行加密，得到秘文c，并将c传输给alice。</p>
+<p>此时，alice使用私钥K<sub>pri</sub>对密文c进行解密，得到明文数据m。由于只有alice知道私钥K<sub>pri</sub>，就算其他人得到了密文c，也无法解密出其明文来。对大整数进行因数分解的难度，是RSA算法安全性的保证。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22">
+<h2>算法准备</h2>
+<ol>
+<li>选取两个质数p、q，p != q，计算其乘积：N = p * q</li>
+<li>计算：φ(N) = (p - 1) * (q - 1)</li>
+<li>让：r = φ(N)</li>
+<li>任选一整数e，1 &lt; e &lt; r，且：gcd(e, r) = 1</li>
+<li>根据算法EEA，求得e的逆元d，使得：ed ≡ 1 (mod r)</li>
+<li>最终，(N, e）即是公钥，（N, d）即是私钥</li>
+<li>alice公开公钥（N，e），同时将私钥（N，d）自己私密保管</li>
+</ol>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23">
+<h2>数据加密</h2>
+<p>bob对于任何消息m，将其转化成整数n，计算：c ≡ n<sup>e</sup> (mod N)，这里c即是密文。</p>
+<h2>数据解密</h2>
+<p>alice拿到密文，计算：n ≡ c<sup>d</sup> (mod N)，这里n即是明文。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24">
+<h2>算法证明</h2>
+<p>因为：ed ≡ 1 (mod r)</p>
+<p>所以：ed = rm + 1，m为正整数</p>
+<p>所以：c<sup>d</sup> ≡ n<sup>ed</sup> ≡ n<sup>rm + 1</sup> ≡ n * n<sup>rm</sup> (mod N)</p>
+<p>根据欧拉定理，可知：n<sup>r</sup> ≡ 1 (mod N)，代入上式：</p>
+<p>n * 1<sup>m</sup> ≡ n (mod N)</p>
+<p>所以结论为：c<sup>d</sup> ≡ n (mod N)</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25">
+<h2>蒙哥马利算法</h2>
+<p>在RSA算法的实现过程中，首先需要随机生成两个大质数，目前推荐至少是2048位的质数，这样可以保证安全。我们在程序模拟过程中，不会使用这么大的质数，仅仅做一个演示。</p>
+<p>RSA需要的几个外部算法，gcd与EEA，在之前的部分都已经介绍过。可以注意到，其加密、解密的过程，牵涉到模运算与指数计算，因为真实环境下，e或者d这两个值，可能会非常的大（例如超过2<sup>1000</sup>），所以这里还需要有一些优化，不能直接计算n<sup>e</sup>、c<sup>d</sup>。</p>
+<p>所以，这里还需要介绍一个算法 - 蒙哥马利算法，蒙哥马利(Montgomery)幂模运算是快速计算a<sup>b</sup> mod p的一种算法，是RSA加密算法的核心之一。需要注意的是，该算法仅仅是作为提升效率而使用，与RSA算法的安全性本身没有关系。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26">
+<p>我们可以看一个简单的例子，例如需要计算A<sup>13</sup> mod P，我们可以这样：</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th style="text-align:right">公式</th>
+<th style="text-align:right">值</th>
+<th style="text-align:right">操作</th>
+<th style="text-align:right">op_code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">A1 = 1 * 1 mod p</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">二次方</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">A2 = A1 * A mod p</td>
+<td style="text-align:right">A<sup>1</sup></td>
+<td style="text-align:right">乘A</td>
+<td style="text-align:right">-</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">A3 = A2 * A2 mod p</td>
+<td style="text-align:right">A<sup>2</sup></td>
+<td style="text-align:right">二次方</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:right">A4 = A3 * A mod p</td>
+<td style="text-align:right">A<sup>3</sup></td>
+<td style="text-align:right">乘A</td>
+<td style="text-align:right">-</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align:right">A5 = A4 * A4 mod p</td>
+<td style="text-align:right">A<sup>6</sup></td>
+<td style="text-align:right">二次方</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align:right">A6 = A5 * A5 mod p</td>
+<td style="text-align:right">A<sup>12</sup></td>
+<td style="text-align:right">二次方</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align:right">A7 = A6 * A mod p</td>
+<td style="text-align:right">A<sup>13</sup></td>
+<td style="text-align:right">乘A</td>
+<td style="text-align:right">-</td>
+</tr>
+</tbody>
+</table>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27">
+<p>我们将13按照2进制显示为：0b1101，大家可以观察到，这里的四个数字，1101，和上表中的op_code的1101相对应，其意思是：</p>
+<ul>
+<li>首先设置结果的初始值为1</li>
+<li>将幂值的二进制表达式从左向右做循环
+<ul>
+<li>遇到1，则做两个操作：二次方操作 + 乘A操作</li>
+<li>遇到0，则仅仅做：二次方操作</li>
+</ul>
+</li>
+</ul>
+<p>二次方操作，其实就是自乘，所以其核心思路是，将模幂运算降为了模乘运算，算法难度从O(2<sup>n</sup>)降为了O(n)。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28">
+<h2>RSA算法代码与示例</h2>
+<p>至此所有的准备工作都好了，我们可以愉快的编码了 <img class="emoji" draggable="false" alt="😂" src="https://twemoji.maxcdn.com/2/svg/1f602.svg" data-marp-twemoji=""/><img class="emoji" draggable="false" alt="😂" src="https://twemoji.maxcdn.com/2/svg/1f602.svg" data-marp-twemoji=""/></p>
+<h3>初始化</h3>
+<p>RSA算法初始化的部分如下，或者看<a href="https://github.com/alexxuyang/cryptography-algo/blob/master/src/bin/rsa_init.rs">这里</a>。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29">
+<pre><code class="language-RUST"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">extern</span> <span class="hljs-keyword">crate</span> cryptography_algo;
+
+<span class="hljs-keyword">use</span> cryptography_algo::gcd;
+<span class="hljs-keyword">use</span> cryptography_algo::ext_euclid;
+
+<span class="hljs-keyword">use</span> rand::Rng;
+<span class="hljs-keyword">use</span> std::env;
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {
+    <span class="hljs-keyword">let</span> p;
+    <span class="hljs-keyword">let</span> q; 
+
+    <span class="hljs-keyword">if</span> env::args().len() == <span class="hljs-number">3</span> {
+
+        p = <span class="hljs-built_in">i64</span>::from_str_radix(&amp;env::args().nth(<span class="hljs-number">1</span>).unwrap(), <span class="hljs-number">10</span>).unwrap();
+        q = <span class="hljs-built_in">i64</span>::from_str_radix(&amp;env::args().nth(<span class="hljs-number">2</span>).unwrap(), <span class="hljs-number">10</span>).unwrap();
+
+        <span class="hljs-keyword">if</span> !prime_tools::is_u64_prime(p <span class="hljs-keyword">as</span> <span class="hljs-built_in">u64</span>) {
+            <span class="hljs-built_in">panic!</span>(<span class="hljs-string">"p is not a prime number!"</span>);
+        }
+
+        <span class="hljs-keyword">if</span> !prime_tools::is_u64_prime(q <span class="hljs-keyword">as</span> <span class="hljs-built_in">u64</span>) {
+            <span class="hljs-built_in">panic!</span>(<span class="hljs-string">"q is not a prime number!"</span>);
+        }
+    } <span class="hljs-keyword">else</span> {
+        p = <span class="hljs-number">2134324421</span>;
+        q = <span class="hljs-number">1990843139</span>;
+    }
+
+    <span class="hljs-keyword">let</span> N: <span class="hljs-built_in">i64</span> = p * q;
+    <span class="hljs-keyword">let</span> r = (p - <span class="hljs-number">1</span>) * (q - <span class="hljs-number">1</span>);
+
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"p: {} ,q: {} N: {}, r: {}"</span>, p, q, N, r);
+
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> rng = rand::thread_rng();
+
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> e;
+    <span class="hljs-keyword">loop</span> {
+        e = rng.gen::&lt;<span class="hljs-built_in">u16</span>&gt;() <span class="hljs-keyword">as</span> <span class="hljs-built_in">i64</span>;
+        <span class="hljs-keyword">if</span> gcd::gcd(e, r)  == <span class="hljs-number">1</span> {
+            <span class="hljs-keyword">break</span>;
+        }
+    }
+
+    <span class="hljs-keyword">let</span> d = ext_euclid::inv(e, r);
+
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"e: {}, d: {}"</span>, e, d);
+
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"public key is(N, e): ({}, {})"</span>, N, e);
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"private key is(N, d): ({}, {})"</span>, N, d);
+}
+</span></span></foreignObject></svg></code></pre>
+<p>核心部分很简单，根据p、q，计算N、r；随机生成e，需要gcd(e, r) = 1，同时求得e的逆元d。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30">
+<h3>加密解密</h3>
+<p>下面的是蒙哥马利算法的RUST代码，或者看<a href="https://github.com/alexxuyang/cryptography-algo/blob/master/src/power_mod.rs">这里</a>。</p>
+<pre><code class="language-RUST"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">power_mod</span></span>(base: <span class="hljs-built_in">i64</span>, <span class="hljs-keyword">mut</span> power: <span class="hljs-built_in">i64</span>, N: <span class="hljs-built_in">i64</span>) -&gt; <span class="hljs-built_in">i64</span> {
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> bits = <span class="hljs-built_in">Vec</span>::new();
+
+    <span class="hljs-keyword">while</span> power != <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">match</span> power &amp; <span class="hljs-number">1</span> {
+           <span class="hljs-number">1</span> =&gt; bits.push(<span class="hljs-literal">true</span>),
+           <span class="hljs-number">0</span> =&gt; bits.push(<span class="hljs-literal">false</span>),
+           _ =&gt; {}
+        }
+        power = power &gt;&gt; <span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> result: <span class="hljs-built_in">i64</span> = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> <span class="hljs-literal">Some</span>(bit) = bits.pop() {
+        result = mod_multiply(result, result, N);
+        <span class="hljs-keyword">if</span> bit {
+            result = mod_multiply(result, base, N);
+        }
+    }
+
+    result
+}
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">mod_multiply</span></span>(a: <span class="hljs-built_in">i64</span>, b:<span class="hljs-built_in">i64</span>, N: <span class="hljs-built_in">i64</span>) -&gt; <span class="hljs-built_in">i64</span> {
+    ((a <span class="hljs-keyword">as</span> <span class="hljs-built_in">i128</span> * b <span class="hljs-keyword">as</span> <span class="hljs-built_in">i128</span>) % (N <span class="hljs-keyword">as</span> <span class="hljs-built_in">i128</span>)) <span class="hljs-keyword">as</span> <span class="hljs-built_in">i64</span>
+}
+
+<span class="hljs-meta">#[cfg(test)]</span>
+<span class="hljs-keyword">mod</span> tests {
+    <span class="hljs-keyword">use</span> super::*;
+
+    <span class="hljs-meta">#[test]</span>
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">mod_multiply_works</span></span>() {
+        <span class="hljs-built_in">assert_eq!</span>(mod_multiply(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">17</span>), <span class="hljs-number">13</span>);
+        <span class="hljs-built_in">assert_eq!</span>(mod_multiply(<span class="hljs-number">6</span>, <span class="hljs-number">27</span>, <span class="hljs-number">5</span>), <span class="hljs-number">2</span>);
+        <span class="hljs-built_in">assert_eq!</span>(mod_multiply(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">19</span>), <span class="hljs-number">8</span>);
+        <span class="hljs-built_in">assert_eq!</span>(mod_multiply(<span class="hljs-number">27</span>, <span class="hljs-number">6</span>, <span class="hljs-number">13</span>), <span class="hljs-number">6</span>);
+    }
+
+    <span class="hljs-meta">#[test]</span>
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">power_mod_works</span></span>() {
+        <span class="hljs-built_in">assert_eq!</span>(power_mod(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>), <span class="hljs-number">1</span>);
+        <span class="hljs-built_in">assert_eq!</span>(power_mod(<span class="hljs-number">6</span>, <span class="hljs-number">10</span>, <span class="hljs-number">5</span>), <span class="hljs-number">1</span>);
+        <span class="hljs-built_in">assert_eq!</span>(power_mod(<span class="hljs-number">5</span>, <span class="hljs-number">13</span>, <span class="hljs-number">19</span>), <span class="hljs-number">17</span>);
+        <span class="hljs-built_in">assert_eq!</span>(power_mod(<span class="hljs-number">27</span>, <span class="hljs-number">6</span>, <span class="hljs-number">51</span>), <span class="hljs-number">9</span>);
+        <span class="hljs-built_in">assert_eq!</span>(power_mod(<span class="hljs-number">45</span>, <span class="hljs-number">13</span>, <span class="hljs-number">19</span>), <span class="hljs-number">7</span>);
+        <span class="hljs-built_in">assert_eq!</span>(power_mod(<span class="hljs-number">1234567</span>, <span class="hljs-number">100</span>, <span class="hljs-number">199</span>), <span class="hljs-number">29</span>);
+        <span class="hljs-built_in">assert_eq!</span>(power_mod(<span class="hljs-number">66887799</span>, <span class="hljs-number">1000000</span>, <span class="hljs-number">1001</span>), <span class="hljs-number">22</span>);
+        <span class="hljs-built_in">assert_eq!</span>(power_mod(<span class="hljs-number">1357924680</span>, <span class="hljs-number">999999</span>, <span class="hljs-number">666889</span>), <span class="hljs-number">355775</span>);
+        <span class="hljs-built_in">assert_eq!</span>(power_mod(<span class="hljs-number">113355778866</span>, <span class="hljs-number">99999</span>, <span class="hljs-number">981287</span>), <span class="hljs-number">797582</span>);
+        <span class="hljs-built_in">assert_eq!</span>(power_mod(<span class="hljs-number">113355778866</span>, <span class="hljs-number">999999</span>, <span class="hljs-number">5050404053</span>), <span class="hljs-number">31958690</span>);
+    }
+}
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31">
+<p>加解密算法入口程序如下，或者看<a href="https://github.com/alexxuyang/cryptography-algo/blob/master/src/bin/rsa_enc_dec.rs">这里</a>。</p>
+<pre><code class="language-RUST"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">extern</span> <span class="hljs-keyword">crate</span> cryptography_algo;
+
+<span class="hljs-keyword">use</span> cryptography_algo::power_mod;
+
+<span class="hljs-keyword">use</span> std::env;
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {
+    <span class="hljs-keyword">if</span> env::args().len() &lt; <span class="hljs-number">3</span> {
+        <span class="hljs-built_in">println!</span>(<span class="hljs-string">"program should be start with: rsa_enc_dec base power modula"</span>);
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">let</span> base = <span class="hljs-built_in">i64</span>::from_str_radix(&amp;env::args().nth(<span class="hljs-number">1</span>).unwrap(), <span class="hljs-number">10</span>).unwrap();
+    <span class="hljs-keyword">let</span> power = <span class="hljs-built_in">i64</span>::from_str_radix(&amp;env::args().nth(<span class="hljs-number">2</span>).unwrap(), <span class="hljs-number">10</span>).unwrap();
+    <span class="hljs-keyword">let</span> modula = <span class="hljs-built_in">i64</span>::from_str_radix(&amp;env::args().nth(<span class="hljs-number">3</span>).unwrap(), <span class="hljs-number">10</span>).unwrap();
+
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"base: {}, power: {}, modula: {}"</span>, base, power, modula);
+
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"result: {}"</span>, power_mod::power_mod(base, power, modula));
+}
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32">
+<h3>运行示例</h3>
+<p>可以使用openssl命令得到质数，命令如下：</p>
+<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>openssl prime -<span class="hljs-keyword">generate</span> -bits <span class="hljs-number">32</span> -safe
+</span></span></foreignObject></svg></code></pre>
+<p><em><strong>算法初始化：</strong></em></p>
+<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>target/release/rsa_init <span class="hljs-number">2134324421</span> <span class="hljs-number">1990843139</span>
+p: <span class="hljs-number">2134324421</span> ,q: <span class="hljs-number">1990843139</span> N: <span class="hljs-number">4249105129947997519</span>, r: <span class="hljs-number">4249105125822829960</span>
+e: <span class="hljs-number">1343</span>, d: <span class="hljs-number">1920481616808978247</span>
+<span class="hljs-keyword">public</span> key <span class="hljs-keyword">is</span>(N, e): (<span class="hljs-number">4249105129947997519</span>, <span class="hljs-number">1343</span>)
+<span class="hljs-keyword">private</span> key <span class="hljs-keyword">is</span>(N, d): (<span class="hljs-number">4249105129947997519</span>, <span class="hljs-number">1920481616808978247</span>)
+</span></span></foreignObject></svg></code></pre>
+<p>初始化需要两个质数参数p、q（不输入则使用默认值），这里注意，由于程序限制p、q的值需要小于：sqrt(2<sup>63</sup>)，p、q最大为3037000493。</p>
+<p>初始化的结果是，得到了公钥（N，e），与私钥（N，d）。这时，alice将公钥给到bob，私钥自己私密保管。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33">
+<p><em><strong>数据加密：</strong></em></p>
+<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-string">target/release/rsa_enc_dec</span> <span class="hljs-number">50412164937805327</span> <span class="hljs-number">1343</span> <span class="hljs-number">4249105129947997519</span>
+<span class="hljs-attr">base:</span> <span class="hljs-number">50412164937805327</span><span class="hljs-string">,</span> <span class="hljs-attr">power:</span> <span class="hljs-number">1343</span><span class="hljs-string">,</span> <span class="hljs-attr">modula:</span> <span class="hljs-number">4249105129947997519</span>
+<span class="hljs-attr">result:</span> <span class="hljs-number">1099769683952491905</span>
+</span></span></foreignObject></svg></code></pre>
+<p>bob拿到alice的公钥后，对自己的数据，进行加密计算。</p>
+<p>该程序有三个参数，第一个是数据明文[50412164937805327]，后面两个参数分别为公钥中的e与N。</p>
+<p>加密过程使用蒙哥马利算法进行模幂计算，最终得到了加密后的密文。</p>
+<p>这时，bob将密文[1099769683952491905]给到alice。</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34">
+<p><em><strong>数据解密：</strong></em></p>
+<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-string">target/release/rsa_enc_dec</span> <span class="hljs-number">1099769683952491905</span> <span class="hljs-number">1920481616808978247</span> <span class="hljs-number">4249105129947997519</span>
+<span class="hljs-attr">base:</span> <span class="hljs-number">1099769683952491905</span><span class="hljs-string">,</span> <span class="hljs-attr">power:</span> <span class="hljs-number">1920481616808978247</span><span class="hljs-string">,</span> <span class="hljs-attr">modula:</span> <span class="hljs-number">4249105129947997519</span>
+<span class="hljs-attr">result:</span> <span class="hljs-number">50412164937805327</span>
+</span></span></foreignObject></svg></code></pre>
+<p>alice拿到bob的密文数据后，结合自己的私钥数据，进行数据解密。</p>
+<p>该程序有三个参数，第一个是密文数据[1099769683952491905]，后面两个参数分别为私钥中的d与N。</p>
+<p>解密过程使用蒙哥马利算法进行模幂计算，最终得到了解密后的明文[50412164937805327]。</p>
+<p>可以看到，最终解密出的明文数据，与最初bob生成的数据是一致的，bingo <img class="emoji" draggable="false" alt="😃" src="https://twemoji.maxcdn.com/2/svg/1f603.svg" data-marp-twemoji=""/><img class="emoji" draggable="false" alt="😃" src="https://twemoji.maxcdn.com/2/svg/1f603.svg" data-marp-twemoji=""/><img class="emoji" draggable="false" alt="😃" src="https://twemoji.maxcdn.com/2/svg/1f603.svg" data-marp-twemoji=""/></p>
+</section>
+<script>!function(){"use strict";const t=()=>"Apple Computer, Inc."===navigator.vendor?[e]:[];function e(t){Array.from(document.getElementsByTagName("svg"),e=>{if(e.hasAttribute("data-marpit-svg")){const{clientHeight:r,clientWidth:a}=e;e.style.transform||(e.style.transform="translateZ(0)");const o=t||e.currentScale||1,i=e.viewBox.baseVal.width/o,n=e.viewBox.baseVal.height/o,s=Math.min(r/n,a/i);Array.from(e.querySelectorAll(":scope > foreignObject"),t=>{const e=t.x.baseVal.value,o=t.y.baseVal.value;Array.from(t.querySelectorAll(":scope > section"),t=>{t.style.transformOrigin||(t.style.transformOrigin="0 0");const l=(a-s*i)/2-e,c=(r-s*n)/2-o;t.style.transform=`translate3d(${l}px,${c}px,0) scale(${s}) translate(${e}px,${o}px)`})})}})}const r="data-marp-fitting",a="data-marp-fitting-code",o="data-marp-fitting-math",i=(t,e,r)=>{if(t.getAttribute(e)!==r)return t.setAttribute(e,r),!0};function n(e=!0){for(const e of t())e();Array.from(document.querySelectorAll(`svg[${r}="svg"]`),t=>{const e=t.firstChild,r=e.firstChild,{scrollWidth:n,scrollHeight:s}=r;let l,c=1;if(t.hasAttribute(a)&&(l=t.parentElement.parentElement),t.hasAttribute(o)&&(l=t.parentElement),l){const t=getComputedStyle(l),e=Math.ceil(l.clientWidth-parseFloat(t.paddingLeft)-parseFloat(t.paddingRight));e&&(c=e)}const p=Math.max(n,c),d=Math.max(s,1),m=`0 0 ${p} ${d}`;i(e,"width",`${p}`),i(e,"height",`${d}`),i(t,"preserveAspectRatio",getComputedStyle(t).getPropertyValue("--preserve-aspect-ratio")||"xMinYMin meet"),i(t,"viewBox",m)&&t.classList.toggle("__reflow__")}),e&&window.requestAnimationFrame(()=>n(e))}!function(){if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");window.marpCoreBrowserScript?console.warn("Marp Core's browser script has already executed."):(Object.defineProperty(window,"marpCoreBrowserScript",{value:!0}),n())}()}();
+</script></foreignObject></svg></div><script>!function(){"use strict";var e={from:function(e,t){var n,r=1===(e.parent||e).nodeType?e.parent||e:document.querySelector(e.parent||e),s=[].filter.call("string"==typeof e.slides?r.querySelectorAll(e.slides):e.slides||r.children,(function(e){return"SCRIPT"!==e.nodeName})),o={},a=function(e,t){return(t=t||{}).index=s.indexOf(e),t.slide=e,t},i=function(e,t){o[e]=(o[e]||[]).filter((function(e){return e!==t}))},l=function(e,t){return(o[e]||[]).reduce((function(e,n){return e&&!1!==n(t)}),!0)},c=function(e,t){s[e]&&(n&&l("deactivate",a(n,t)),n=s[e],l("activate",a(n,t)))},u=function(e,t){var r=s.indexOf(n)+e;l(e>0?"next":"prev",a(n,t))&&c(r,t)},d={off:i,on:function(e,t){return(o[e]||(o[e]=[])).push(t),i.bind(null,e,t)},fire:l,slide:function(e,t){if(!arguments.length)return s.indexOf(n);l("slide",a(s[e],t))&&c(e,t)},next:u.bind(null,1),prev:u.bind(null,-1),parent:r,slides:s,destroy:function(e){l("destroy",a(n,e)),o={}}};return(t||[]).forEach((function(e){e(d)})),n||c(0),d}};function t(e){e.parent.classList.add("bespoke-marp-parent"),e.slides.map(e=>e.classList.add("bespoke-marp-slide")),e.on("activate",t=>{e.slides.map(e=>e.classList.remove("bespoke-marp-active")),t.slide.classList.add("bespoke-marp-active")})}function n(e=2e3){return t=>{let n;function r(){n&&clearTimeout(n),n=setTimeout(()=>{t.parent.classList.add("bespoke-marp-inactive")},e),t.parent.classList.remove("bespoke-marp-inactive")}document.addEventListener("mousedown",r),document.addEventListener("mousemove",r),document.addEventListener("touchend",r),setTimeout(r,0)}}const r=["AUDIO","BUTTON","INPUT","SELECT","TEXTAREA","VIDEO"];function s(e){e.parent.addEventListener("keydown",e=>{if(!e.target)return;const t=e.target;(r.includes(t.nodeName)||"true"===t.contentEditable)&&e.stopPropagation()})}function o(e){window.addEventListener("load",()=>{for(const t of e.slides){const e=t.querySelector("[data-marp-fitting]")?"":"hideable";t.setAttribute("data-bespoke-marp-load",e)}})}function a(e){let t=0,n=0;Object.defineProperty(e,"fragments",{enumerable:!0,value:e.slides.map(e=>[null,...e.querySelectorAll("[data-marpit-fragment]")])});const r=r=>void 0!==e.fragments[t][n+r],s=(r,s)=>{t=r,n=s,e.fragments.forEach((e,t)=>{e.forEach((e,n)=>{if(null==e)return;const o=t<r||t===r&&n<=s;e.setAttribute("data-bespoke-marp-fragment",o?"active":"inactive"),t===r&&n===s?e.setAttribute("data-bespoke-marp-current-fragment","current"):e.removeAttribute("data-bespoke-marp-current-fragment")})}),e.fragmentIndex=s;const o={slide:e.slides[r],index:r,fragments:e.fragments[r],fragmentIndex:s};e.fire("fragment",o)};e.on("next",()=>{if(r(1))return s(t,n+1),!1;const o=t+1;e.fragments[o]&&s(o,0)}),e.on("prev",()=>{if(r(-1))return s(t,n-1),!1;const o=t-1;e.fragments[o]&&s(o,e.fragments[o].length-1)}),e.on("slide",({index:t,fragment:n})=>{let r=0;if(void 0!==n){const s=e.fragments[t];if(s){const{length:e}=s;r=-1===n?e-1:Math.min(Math.max(n,0),e-1)}}s(t,r)}),s(0,0)}var i,l=function(e,t){return e(t={exports:{}},t.exports),t.exports}((function(e){
+/*!
+  * screenfull
+  * v5.0.0 - 2019-09-09
+  * (c) Sindre Sorhus; MIT License
+  */
+!function(){var t="undefined"!=typeof window&&void 0!==window.document?window.document:{},n=e.exports,r=function(){for(var e,n=[["requestFullscreen","exitFullscreen","fullscreenElement","fullscreenEnabled","fullscreenchange","fullscreenerror"],["webkitRequestFullscreen","webkitExitFullscreen","webkitFullscreenElement","webkitFullscreenEnabled","webkitfullscreenchange","webkitfullscreenerror"],["webkitRequestFullScreen","webkitCancelFullScreen","webkitCurrentFullScreenElement","webkitCancelFullScreen","webkitfullscreenchange","webkitfullscreenerror"],["mozRequestFullScreen","mozCancelFullScreen","mozFullScreenElement","mozFullScreenEnabled","mozfullscreenchange","mozfullscreenerror"],["msRequestFullscreen","msExitFullscreen","msFullscreenElement","msFullscreenEnabled","MSFullscreenChange","MSFullscreenError"]],r=0,s=n.length,o={};r<s;r++)if((e=n[r])&&e[1]in t){for(r=0;r<e.length;r++)o[n[0][r]]=e[r];return o}return!1}(),s={change:r.fullscreenchange,error:r.fullscreenerror},o={request:function(e){return new Promise(function(n,s){var o=function(){this.off("change",o),n()}.bind(this);this.on("change",o),e=e||t.documentElement,Promise.resolve(e[r.requestFullscreen]()).catch(s)}.bind(this))},exit:function(){return new Promise(function(e,n){if(this.isFullscreen){var s=function(){this.off("change",s),e()}.bind(this);this.on("change",s),Promise.resolve(t[r.exitFullscreen]()).catch(n)}else e()}.bind(this))},toggle:function(e){return this.isFullscreen?this.exit():this.request(e)},onchange:function(e){this.on("change",e)},onerror:function(e){this.on("error",e)},on:function(e,n){var r=s[e];r&&t.addEventListener(r,n,!1)},off:function(e,n){var r=s[e];r&&t.removeEventListener(r,n,!1)},raw:r};r?(Object.defineProperties(o,{isFullscreen:{get:function(){return Boolean(t[r.fullscreenElement])}},element:{enumerable:!0,get:function(){return t[r.fullscreenElement]}},isEnabled:{enumerable:!0,get:function(){return Boolean(t[r.fullscreenEnabled])}}}),n?e.exports=o:window.screenfull=o):n?e.exports={isEnabled:!1}:window.screenfull={isEnabled:!1}}()}));l.isEnabled;function c(e){e.fullscreen=()=>{l.isEnabled&&l.toggle(document.body)},document.addEventListener("keydown",t=>{70!==t.which&&122!==t.which||t.altKey||t.ctrlKey||t.metaKey||!l.isEnabled||(e.fullscreen(),t.preventDefault())})}function u(e={}){const t=Object.assign({interval:200},e);return e=>{document.addEventListener("keydown",t=>{(32===t.which&&t.shiftKey||33===t.which||37===t.which||38===t.which)&&e.prev(),(32===t.which&&!t.shiftKey||34===t.which||39===t.which||40===t.which)&&e.next(),35===t.which&&e.slide(e.slides.length-1,{fragment:-1}),36===t.which&&e.slide(0)});let n,r,s=0;e.parent.addEventListener("wheel",o=>{let a=!1;const l=(e,t)=>{var n;e&&(a=a||function(e,t){return function(e,t){const n=t===i.X?"Width":"Height";return e[`client${n}`]<e[`scroll${n}`]}(e,t)&&function(e,t){const{overflow:n}=e,r=e[`overflow${t}`];return"auto"===n||"scroll"===n||"auto"===r||"scroll"===r}(getComputedStyle(e),t)}(e,t)),(null===(n=e)||void 0===n?void 0:n.parentElement)&&l(e.parentElement,t)};if(0!==o.deltaX&&l(o.target,i.X),0!==o.deltaY&&l(o.target,i.Y),a)return;o.preventDefault(),r&&clearTimeout(r),r=setTimeout(()=>{n=0},t.interval);const c=Date.now()-s<t.interval,u=Math.sqrt(Math.pow(o.deltaX,2)+Math.pow(o.deltaY,2)),d=u<=n;if(n=u,c||d)return;let f;(o.deltaX>0||o.deltaY>0)&&(f="next"),(o.deltaX<0||o.deltaY<0)&&(f="prev"),f&&(e[f](),s=Date.now())})}}function d(e=".bespoke-marp-osc"){const t=document.querySelector(e);if(!t)return()=>{};const n=(e,n)=>{t.querySelectorAll(`[data-bespoke-marp-osc=${JSON.stringify(e)}]`).forEach(n)};return l.isEnabled||n("fullscreen",e=>e.style.display="none"),e=>{t.addEventListener("click",t=>{if(t.target instanceof HTMLElement){const{bespokeMarpOsc:n}=t.target.dataset;switch(n&&t.target.blur(),n){case"next":e.next();break;case"prev":e.prev();break;case"fullscreen":"function"==typeof e.fullscreen&&l.isEnabled&&e.fullscreen()}}}),e.parent.appendChild(t),e.on("activate",({index:t})=>{n("page",n=>n.textContent=`Page ${t+1} of ${e.slides.length}`)}),e.on("fragment",({index:t,fragments:r,fragmentIndex:s})=>{n("prev",e=>e.disabled=0===t&&0===s),n("next",n=>n.disabled=t===e.slides.length-1&&s===r.length-1)}),l.isEnabled&&l.onchange(()=>n("fullscreen",e=>e.classList.toggle("exit",l.isEnabled&&l.isFullscreen)))}}!function(e){e.X="X",e.Y="Y"}(i||(i={}));const f=".bespoke-progress-bar";function h(e){e.on("activate",t=>{document.querySelectorAll(f).forEach(n=>{n.style.flexBasis=`${100*t.index/(e.slides.length-1)}%`})})}const m=(...e)=>history.replaceState(...e),g=e=>new URLSearchParams(location.search).get(e),p=e=>{const t=g(e);return b({[e]:void 0}),t},b=(e,t={})=>{const n=Object.assign({location:location,setter:m},t),r=new URLSearchParams(n.location.search);for(const t of Object.keys(e)){const n=e[t];"string"==typeof n?r.set(t,n):r.delete(t)}try{n.setter(null,document.title,((e,{protocol:t,host:n,pathname:r,hash:s}=location)=>{const o=e.toString();return`${t}//${n}${r}${o?"?":""}${o}${s}`})(r,n.location))}catch(e){console.error(e)}},v=e=>{const t=Number.parseInt(e,10);return Number.isNaN(t)?null:t};function w(e={}){const t=Object.assign({history:!0},e);return e=>{let n=!0;const r=e=>{const t=n;try{return n=!0,e()}finally{n=t}},s=(t={fragment:!0})=>{((t,n)=>{const{fragments:r,slides:s}=e,o=Math.max(0,Math.min(t,s.length-1)),a=Math.max(0,Math.min(n||0,r[o].length-1));o===e.slide()&&a===e.fragmentIndex||e.slide(o,{fragment:a})})((v(location.hash.slice(1))||1)-1,t.fragment?v(g("f")||""):null)};e.on("fragment",({index:e,fragmentIndex:r})=>{n||b({f:0===r||r.toString()},{location:Object.assign(Object.assign({},location),{hash:`#${e+1}`}),setter:(...e)=>t.history?history.pushState(...e):history.replaceState(...e)})}),setTimeout(()=>{s(),window.addEventListener("hashchange",()=>r(()=>{s({fragment:!1}),b({f:void 0})})),window.addEventListener("popstate",()=>{n||r(()=>s())}),n=!1},0)}}var y=self.crypto||self.msCrypto,E=function(e){e=e||21;for(var t="",n=y.getRandomValues(new Uint8Array(e));e--;)t+="QLUint8ARdomValuesObj0h6345-79BCrypgJzHKTNYDSMkXPZ_FfG1WcqvwxEI2"[63&n[e]];return t};function x(e={}){const t=e.key||E(),n=`bespoke-marp-sync-${t}`,r=()=>{const e=localStorage.getItem(n);return e?JSON.parse(e):Object.create(null)},s=e=>{const t=r(),s=Object.assign(Object.assign({},t),e(t));return localStorage.setItem(n,JSON.stringify(s)),s};return s(e=>({reference:(e.reference||0)+1})),e=>{Object.defineProperty(e,"syncKey",{value:t,enumerable:!0}),setTimeout(()=>{e.on("fragment",e=>{s(()=>({index:e.index,fragmentIndex:e.fragmentIndex}))})},0),window.addEventListener("storage",t=>{if(t.key===n&&t.oldValue&&t.newValue){const n=JSON.parse(t.oldValue),r=JSON.parse(t.newValue);n.index===r.index&&n.fragmentIndex===r.fragmentIndex||e.slide(r.index,{fragment:r.fragmentIndex})}}),e.on("destroy",()=>{const{reference:e}=r();void 0===e||e<=1?localStorage.removeItem(n):s(()=>({reference:e-1}))})}}function k(e={}){const t=Object.assign({slope:Math.tan(-35*Math.PI/180),swipeThreshold:30},e);return e=>{let n;const r=e.parent,s=e=>{const t=r.getBoundingClientRect();return{x:e.pageX-(t.left+t.right)/2,y:e.pageY-(t.top+t.bottom)/2}};r.addEventListener("touchstart",e=>{n=1===e.touches.length?s(e.touches[0]):void 0}),r.addEventListener("touchmove",e=>{if(n)if(1===e.touches.length){e.preventDefault();const t=s(e.touches[0]),r=t.x-n.x,o=t.y-n.y;n.delta=Math.sqrt(Math.pow(Math.abs(r),2)+Math.pow(Math.abs(o),2)),n.radian=Math.atan2(r,o)}else n=void 0}),r.addEventListener("touchend",r=>{if(n){if(n.delta&&n.delta>=t.swipeThreshold){let s=n.radian-t.slope;s=(s+Math.PI)%(2*Math.PI)-Math.PI,e[s<0?"next":"prev"](),r.stopPropagation()}n=void 0}})}}!function(r=document.getElementById("p")){const i=p("sync")||void 0,l=e.from(r,[s,t,n(),o,w({history:!1}),u(),c,h,k(),d(),a,x({key:i})]);window.addEventListener("beforeunload",()=>b({sync:l.syncKey})),window.addEventListener("unload",()=>l.destroy())}()}();
+</script></body></html>
